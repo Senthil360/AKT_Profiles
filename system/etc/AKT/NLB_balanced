@@ -8,7 +8,7 @@
 #So eventually after load is reduced  both clusters idle soon,  thus saving a lot of Battery
 #Other than Heavy games this profile could be used for any type of scenario, should result better battery life than stock with almost no drop in performance. 
 #TWEAKS_BEGIN
-BB=/system/etc/AKTbusybox
+BB=/system/etc/AKT/busybox
 divider="==========================="
 if [ -e "/data/system/NLB" ]; then
     check=$($BB cat /data/system/NLB);
