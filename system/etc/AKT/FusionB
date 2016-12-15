@@ -237,71 +237,73 @@ sleep 0.5
 echo "=========================================="
 echo Tweaking other various Settings
 echo ·I/O Values
-if [ -e "/sys/devices/virtual/block/sda/queue/scheduler" ]; then
-string=$(</sys/devices/virtual/block/sda/queue/scheduler);
-if [[ $string == *"zen"* ]]
-then
+if [ -e /sys/devices/virtual/block/dm-0/queue/scheduler ]; then
+if [ -e /sys/block/sda/queue/scheduler ]; then
+   SDA_PATH=/sys/block/sda/queue/scheduler;
+fi
+if [ -e /sys/devices/virtual/block/sda/queue/scheduler ]; then
+   SDA_PATH=/sys/devices/virtual/block/sda/queue;
+fi
+string=/sys/devices/virtual/block/dm-0/queue;
+Zen_Available=false;
+if  $BB grep 'zen' $string; then
+     Zen_Available=true;
+fi
+if [ "$Zen_Available" == "true" ]; then
     echo zen > /sys/devices/virtual/block/dm-0/queue/scheduler
-    echo 350 > /sys/devices/virtual/block/dm-0/queue/iosched/sync_expire
-    echo 3500 > /sys/devices/virtual/block/dm-0/queue/iosched/async_expire
-    echo 10 > /sys/devices/virtual/block/dm-0/queue/iosched/fifo_batch
-    chmod 644 /sys/devices/virtual/block/dm-0/queue/iosched/sync_expire
-    echo 350 > /sys/devices/virtual/block/dm-0/queue/iosched/sync_expire
-else
+if [ -e /sys/devices/virtual/block/dm-0/queue/scheduler ]; then
+    DM_PATH=/sys/devices/virtual/block/dm-0/queue
+fi
+if [ -e /sys/block/dm-0/queue/scheduler ]; then
+    DM_PATH=/sys/block/dm-0/queue
+fi
+if [ -e /sys/block/sda/queue/scheduler ]; then
+   SDA_PATH=/sys/block/sda/queue;
+fi
+if [ -e /sys/devices/virtual/block/sda/queue/scheduler ]; then
+   SDA_PATH=/sys/devices/virtual/block/sda/queue;
+fi
+string=/sys/devices/virtual/block/dm-0/queue/scheduler;
+Zen_Available=false;
+if  $BB grep 'zen' $string; then
+     Zen_Available=true;
+fi
+if [ "$Zen_Available" == "true" ]; then
+    echo zen > $DM_PATH/scheduler
+    echo 300 > $DM_PATH/iosched/sync_expire
+    echo 3000 > $DM_PATH/iosched/async_expire
+    echo 14 > $DM_PATH/iosched/fifo_batch
+    chmod 644 $DM_PATH/iosched/sync_expire
+    echo 300 > $DM_PATH/iosched/sync_expire
+    echo zen > $SDA_PATH/scheduler
+    echo 300 > $SDA_PATH/iosched/sync_expire
+    echo 3000 > $SDA_PATH/iosched/async_expire
+    echo 14 > $SDA_PATH/iosched/fifo_batch
+    chmod 644 $SDA_PATH/iosched/sync_expire
+    echo 300 > $SDA_PATH/iosched/sync_expire
+fi
+if [ "$Zen_Available" = "false" ]; then
     if grep -q 'ro.build.flavor=cm_oneplus3-userdebug' /system/build.prop; then
         echo ZEN not avalible, setting 'Noop' instead...
-        echo noop > /sys/block/sda/queue/scheduler
-	echo noop > /sys/devices/virtual/block/dm-0/queue/scheduler
+        echo noop > $SDA_PATH/scheduler
+	echo noop > $DM_PATH/scheduler
     else
         echo ZEN not avalible, setting 'CFQ' instead...
-        echo cfq > /sys/block/sda/queue/scheduler
-	echo cfq > /sys/devices/virtual/block/dm-0/queue/scheduler
+        echo cfq > $SDA_PATH
+	echo cfq > $DM_PATH/scheduler
     fi
 fi
+if [ -e "$DM_PATH/iostats" ]; then
+	echo 0 > $DM_PATH/iostats
 fi
-if [ -e "/sys/block/dm-0/queue/iostats" ]; then
-	echo 0 > /sys/devices/virtual/block/dm-0/queue/iostats
-fi
-if [ -e "/sys/block/dm-0/queue/rq_affinity" ]; then
-	echo 1 > /sys/devices/virtual/block/dm-0/queue/rq_affinity
-fi
-if [ -e "/sys/block/dm-0/bdi/read_ahead_kb" ]; then
-	echo 256 > /sys/devices/virtual/block/dm-0/bdi/read_ahead_kb
-fi
-string=$(</sys/block/sda/queue/scheduler);
-if [[ $string == *"zen"* ]]
-then
-    echo zen > /sys/block/sda/queue/scheduler
-    echo 350 > /sys/block/sda/queue/iosched/sync_expire
-    echo 3500 > /sys/block/sda/queue/iosched/async_expire
-    echo 10 > /sys/block/sda/queue/iosched/fifo_batch
-    chmod 644 /sys/block/sda/queue/iosched/sync_expire
-    echo 350 > /sys/block/sda/queue/iosched/sync_expire
-    echo zen > /sys/block/dm-0/queue/scheduler
-    echo 3500 > /sys/block/dm-0/queue/iosched/async_expire
-    echo 10 > /sys/block/dm-0/queue/iosched/fifo_batch
-else
-    if grep -q 'ro.build.flavor=cm_oneplus3-userdebug' /system/build.prop; then
-        echo ZEN not avalible, setting 'Noop' instead...
-        echo noop > /sys/block/sda/queue/scheduler
-	echo noop > /sys/block/dm-0/queue/scheduler
-    else
-        echo ZEN not avalible, setting 'CFQ' instead...
-        echo cfq > /sys/block/sda/queue/scheduler
-	echo cfq > /sys/block/dm-0/queue/scheduler
-    fi
-fi
-if [ -e "/sys/block/dm-0/queue/iostats" ]; then
-	echo 0 > /sys/block/dm-0/queue/iostats
-fi
-if [ -e "/sys/block/dm-0/queue/rq_affinity" ]; then
-	echo 1 > /sys/block/dm-0/queue/rq_affinity
+if [ -e "$DM_PATH/rq_affinity" ]; then
+	echo 1 > $DM_PATH/rq_affinity
 fi
 if [ -e "/sys/block/dm-0/bdi/read_ahead_kb" ]; then
-	echo 256 > /sys/block/dm-0/bdi/read_ahead_kb
+	echo 512 > /sys/devices/virtual/block/dm-0/bdi/read_ahead_kb
 fi
-if [ -e "/sys/block/dm-0/bdi/read_ahead_kb" ]; then
-	echo 256 > /sys/block/sda/bdi/read_ahead_kb
+if [ -e "/sys/block/sda/bdi/read_ahead_kb" ]; then
+	echo 512 > /sys/block/sda/bdi/read_ahead_kb
 fi
 echo ·Memory Values
 echo 00 > /proc/sys/vm/swappiness
