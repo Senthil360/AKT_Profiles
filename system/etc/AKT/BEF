@@ -1,0 +1,130 @@
+#!/system/bin/sh
+#Author: WNijhof, Original from asiier
+#Settings By: Mostafa Wael (mostafawael.1998)
+#Device: One Plus 3
+#Codename: Burnout Extreme
+#Build Status: Final
+#Last Updated: 09-12-2016
+#SCRIPT CREDITS: ASIIER
+echo ""
+
+#Apply settings to LITTLE cluster
+echo Applying settings to LITTLE Cluster...
+sleep 0.5
+
+#Temporarily change permissions to governor files for the LITTLE cluster to enable Interactive governor
+chmod 644 /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
+echo interactive > /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
+chmod 444 /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
+
+chmod 644 /sys/devices/system/cpu/cpu0/cpufreq/interactive/target_loads
+echo 70 1324800:75 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/target_loads
+chmod 444 /sys/devices/system/cpu/cpu0/cpufreq/interactive/target_loads
+
+echo 80000 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/timer_slack
+echo 1478400 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/hispeed_freq
+echo 20000 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/timer_rate
+echo 9000 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/above_hispeed_delay
+echo 85 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/go_hispeed_load
+echo 19000 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/min_sample_time
+echo 79000 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/max_freq_hysteresis
+echo 1 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/ignore_hispeed_on_notif
+echo 0 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/boost
+echo 0 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/fast_ramp_down
+echo 0 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/align_windows
+echo 1 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/use_migration_notif
+echo 1 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/use_sched_load
+echo 0 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/boostpulse_duration
+echo 0 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/io_is_busy
+sleep 0.5
+
+#Apply settings to Big cluster
+echo Applying settings to BIG Cluster
+sleep 0.2
+
+#Temporarily change permissions to governor files for the LITTLE cluster to enable Interactive governor
+chmod 644 /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor
+echo interactive > /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor
+chmod 444 /sys/devices/system/cpu/cpu2/cpufreq/scaling_governor
+
+#change target loads
+chmod 644 /sys/devices/system/cpu/cpu2/cpufreq/interactive/target_loads
+echo 60 > /sys/devices/system/cpu/cpu2/cpufreq/interactive/target_loads 
+chmod 444 /sys/devices/system/cpu/cpu2/cpufreq/interactive/target_loads
+sleep 0.5
+
+#Tweak Interactive Governor
+echo 80000 > /sys/devices/system/cpu/cpu2/cpufreq/interactive/timer_slack
+echo 2073600 > /sys/devices/system/cpu/cpu2/cpufreq/interactive/hispeed_freq
+echo 20000 > /sys/devices/system/cpu/cpu2/cpufreq/interactive/timer_rate
+echo 9000 > /sys/devices/system/cpu/cpu2/cpufreq/interactive/above_hispeed_delay
+echo 80 > /sys/devices/system/cpu/cpu2/cpufreq/interactive/go_hispeed_load
+echo 19000 > /sys/devices/system/cpu/cpu2/cpufreq/interactive/min_sample_time
+echo 79000 > /sys/devices/system/cpu/cpu2/cpufreq/interactive/max_freq_hysteresis
+echo 1 > /sys/devices/system/cpu/cpu2/cpufreq/interactive/ignore_hispeed_on_notif
+echo 0 > /sys/devices/system/cpu/cpu2/cpufreq/interactive/boost
+echo 0 > /sys/devices/system/cpu/cpu2/cpufreq/interactive/fast_ramp_down
+echo 0 > /sys/devices/system/cpu/cpu2/cpufreq/interactive/align_windows
+echo 1 > /sys/devices/system/cpu/cpu2/cpufreq/interactive/use_migration_notif
+echo 0 > /sys/devices/system/cpu/cpu2/cpufreq/interactive/use_sched_load
+echo 0 > /sys/devices/system/cpu/cpu2/cpufreq/interactive/boostpulse_duration
+echo 0 > /sys/devices/system/cpu/cpu2/cpufreq/interactive/io_is_busy
+sleep 0.2
+
+echo "=========================================="
+chmod 644 /sys/module/cpu_boost/parameters/input_boost_freq
+echo 0:0 1:0 2:0 3:0 > /sys/module/cpu_boost/parameters/input_boost_freq
+chmod 644 /sys/module/cpu_boost/parameters/boost_ms
+echo 0 > /sys/module/cpu_boost/parameters/boost_ms
+chmod 644 /sys/module/cpu_boost/parameters/input_boost_ms
+echo 0 > /sys/module/cpu_boost/parameters/input_boost_ms
+echo "=========================================="
+
+#Disable TouchBoost
+echo Disabling TouchBoost
+    if [ -e "/sys/module/msm_performance/parameters/touchboost" ]; then
+    chmod 644 /sys/module/msm_performance/parameters/touchboost
+    echo 0 > /sys/module/msm_performance/parameters/touchboost
+else
+    echo "*Not supported for your current Kernel*"
+fi
+sleep 0.3
+
+#echo Tweaking HMP Scheduler for correcting BIG Cluster utilization
+echo 35 > /proc/sys/kernel/sched_downmigrate
+echo 50> /proc/sys/kernel/sched_upmigrate
+echo 2 > /proc/sys/kernel/sched_spill_nr_run
+echo 35 > /proc/sys/kernel/sched_spill_load
+echo 19 > /proc/sys/kernel/sched_upmigrate_min_nice
+echo 1 > /proc/sys/kernel/sched_enable_power_aware
+echo 10 > /proc/sys/kernel/sched_small_wakee_task_load
+echo 25 > /proc/sys/kernel/sched_big_waker_task_load
+echo 0 > /proc/sys/kernel/sched_restrict_cluster_spill
+echo 1 > /proc/sys/kernel/sched_rr_timeslice_ms
+echo 0 > /proc/sys/kernel/sched_boost
+echo 100 > /proc/sys/kernel/sched_init_task_load
+
+#Tweaks for other various Settings
+sleep 0.5
+echo "=========================================="
+echo Tweaking other various Settings
+echo ·I/O Values
+
+echo cfq > /sys/block/sda/queue/scheduler
+
+echo 3072 > /sys/block/dm-0/bdi/read_ahead_kb
+
+echo 0 > /sys/module/lowmemorykiller/parameters/enable_adaptive_lmk
+
+#Tweaking GPU
+echo 560000000 > /sys/class/kgsl/kgsl-3d0/max_gpuclk
+	
+sleep 1
+echo ------------------------------------------------------------
+echo 'Burnout Extreme Final' Successfully Applied! 
+echo   You may now tweak them further
+echo    using EXKM or Kernel Adiutor
+echo ------------------------------------------------------------
+echo ""
+echo " Done,  press ENTER then close"
+sleep 4
