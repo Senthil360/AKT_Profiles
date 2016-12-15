@@ -1,7 +1,7 @@
 
 #!/system/bin/sh
 #All-in-One Project
-#Scripted - Asiier
+#Scripted - Asiier & Senthil360
 #Tweaks - @Senthil360 @Mostafa Wael @Patalao @Asiier
 BB=/system/etc/AKT/busybox
 divider="  =============================  "
@@ -16,24 +16,26 @@ clear
 function Battery
 {
 option=0
-until [ "$option" = "6" ]; do
-echo -e "\e[01;31m    UP  Less Battery / More Performance \e[00;37m"
+until [ "$option" = "7" ]; do
+echo -e "\e[01;31m   UP  Less Battery / More Performance \e[00;37m"
 echo -e "\e[01;32m   | \e[00;37m"
 echo -e "\e[01;32m   | \e[00;37m"
 echo -e "\e[01;32m DOWN More Battery / Less Performance \e[00;37m"
 echo ""
 sleep 3
-echo -e "\e[01;32m 1.) Nameless Battery by @Senthil360 \e[00;37m"
+echo -e "\e[01;32m 1.) Project Zhana Battery by @Asiier \e[00;37m"
 echo ""
-echo -e "\e[01;34m 2.) Project Zhana Battery by @Asiier \e[00;37m"
+echo -e "\e[01;34m 2.) Nameless Battery by @Senthil360  \e[00;37m"
 echo ""
-echo -e "\e[01;32m 3.) Project X.A.N.A Battery by @Asiier \e[00;37m"
+echo -e "\e[01;32m 3.) FairPark by @Asiier \e[00;37m"
 echo ""
-echo -e "\e[01;34m 4.) Project X.A.N.A Battery Extreme by @Asiier \e[00;37m"
+echo -e "\e[01;32m 4.) Project X.A.N.A Battery by @Asiier \e[00;37m"
 echo ""
-echo -e "\e[01;35m 5.) Additional tweaks... \e[00;37m"
+echo -e "\e[01;34m 5.) Project X.A.N.A Battery Extreme by @Asiier \e[00;37m"
 echo ""
-echo -e "\e[01;35m 6.) Main menu \e[00;37m"
+echo -e "\e[01;35m 6.) Additional tweaks... \e[00;37m"
+echo ""
+echo -e "\e[01;35m 7.) Main menu \e[00;37m"
 echo ""
 echo $divider
 echo ""
@@ -41,44 +43,66 @@ echo -n "Please select a profile:"
 read option
 echo ""
 case $option in
-1 ) #Nameless_Battery 
-mount -o remount,rw /system 2>/dev/null
-cat /system/etc/AKT/NLB_battery > /system/etc/init.d/99AKT
-chmod 777 /system/etc/init.d/99AKT
-chmod 777 /system/etc/AKT/NLB_battery
-sh /system/etc/AKT/NLB_battery
-sleep 5;
-clear;;
-2 ) #Project_Zhana_Battery
+1 ) #Project_Zhana_Battery
 mount -o remount,rw /system 2>/dev/null
 cat /system/etc/AKT/PZ_battery > /system/etc/init.d/99AKT
 chmod 777 /system/etc/init.d/99AKT
 chmod 777 /system/etc/AKT/PZ_battery
+clear
 sh /system/etc/AKT/PZ_battery
+clear
+echo " Installation finished... For additional information and questions, please visit our XDA thread"
 sleep 5;
-clear;;
-3 ) #Project_XANA_Battery
+exit;;
+2 ) #Nameless_Battery 
+mount -o remount,rw /system 2>/dev/null
+cat /system/etc/AKT/NLB_battery > /system/etc/init.d/99AKT
+chmod 777 /system/etc/init.d/99AKT
+chmod 777 /system/etc/AKT/NLB_battery
+clear
+sh /system/etc/AKT/NLB_battery
+clear
+echo " Installation finished... For additional information and questions, please visit our XDA thread"
+sleep 5;
+exit;;
+3 ) #FairPark
+mount -o remount,rw /system 2>/dev/null
+cat /system/etc/AKT/FairPark > /system/etc/init.d/99AKT
+chmod 777 /system/etc/init.d/99AKT
+chmod 777 /system/etc/AKT/FairPark
+clear
+sh /system/etc/AKT/FairPark
+clear
+echo " Installation finished... For additional information and questions, please visit our XDA thread"
+sleep 5;
+exit;;
+4 ) #Project_XANA_Battery
 mount -o remount,rw /system 2>/dev/null
 cat /system/etc/AKT/PX_battery > /system/etc/init.d/99AKT
 chmod 777 /system/etc/init.d/99AKT
 chmod 777 /system/etc/AKT/PX_battery
+clear
 sh /system/etc/AKT/PX_battery
+clear
+echo " Installation finished... For additional information and questions, please visit our XDA thread"
 sleep 5;
-clear;;
-4 ) #Project_XANA_Balanced
+exit;;
+5 ) #Project_XANA_Extreme
 mount -o remount,rw /system 2>/dev/null
 cat /system/etc/AKT/PX_battery_extreme > /system/etc/init.d/99AKT
 chmod 777 /system/etc/init.d/99AKT
+clear
 chmod 777 /system/etc/AKT/PX_battery_extreme
-sh /system/etc/AKT/PX_battery_extreme
+clear
+echo " Installation finished... For additional information and questions, please visit our XDA thread"
 sleep 5;
-clear;;
-5 ) echo "Coming soon"
+exit;;
+6 ) echo "Coming soon"
 echo " You tell me what to add here"
 sleep 2;
 clear;;
-6 ) clear; main_menu;;
-7 ) clear; break ;;
+7 ) clear; main_menu;;
+8 ) clear; break ;;
 * ) clear; echo " Please, enter a valid option..."; 
 sleep 2;
 clear;;
@@ -90,19 +114,19 @@ function Performance
 {
 option=0
 until [ "$option" = "4" ]; do
-echo -e "\e[01;31m    UP  Less Battery / More Performance \e[00;37m"
+echo -e "\e[01;31m   UP  Less Battery / More Performance \e[00;37m"
 echo -e "\e[01;32m   | \e[00;37m"
 echo -e "\e[01;32m   | \e[00;37m"
 echo -e "\e[01;32m DOWN More Battery / Less Performance \e[00;37m"
 echo ""
 sleep 3
-echo -e "\e[01;32m 1.) Burnout Extrem Final by @Mostafa Wael \e[00;37m"
+echo -e "\e[01;32m 1.) Burnout PR2 Golden by @Mostafa Wael \e[00;37m"
 echo ""
 echo -e "\e[01;32m 2.) Nameless Perfomance by @Senthil360 \e[00;37m"
 echo ""
 echo -e "\e[01;34m 3.) Fusion Performance by @Patalao \e[00;37m"
 echo ""
-echo -e "\e[01;35m 4.) Additional tweaks like BPR or other... \e[00;37m"
+echo -e "\e[01;35m 4.) Additional tweaks... \e[00;37m"
 echo ""
 echo -e "\e[01;35m 5.) Main menu \e[00;37m"
 echo ""
@@ -182,9 +206,17 @@ echo -n "Please select a profile:"
 read option
 echo ""
 case $option in
-1 ) clear 
-echo "Not yet avalible"
-sleep 2;;
+1 ) #GhostPepper
+mount -o remount,rw /system 2>/dev/null
+cat /system/etc/AKT/GhostPepper > /system/etc/init.d/99AKT
+chmod 777 /system/etc/init.d/99AKT
+chmod 777 /system/etc/AKT/GhostPepper
+clear
+sh /system/etc/AKT/GhostPepper
+clear
+echo " Installation finished... For additional information and questions, please visit our XDA thread"
+sleep 5;
+exit;;
 2 ) mount -o remount,rw /system 2>/dev/null
 cat /system/etc/AKT/FusionB > /system/etc/init.d/99AKT
 chmod 777 /system/etc/init.d/99AKT
