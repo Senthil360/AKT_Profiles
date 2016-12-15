@@ -313,9 +313,8 @@ else
 	echo ' *LMK cannot currently be modified on your Kernel* '
 fi
 echo ·TCP Values
-string=$(</proc/sys/net/ipv4/tcp_available_congestion_control);
-if [[ $string == *"westwood"* ]]
-then
+string2=/proc/sys/net/ipv4/tcp_available_congestion_control
+if grep 'westwood' $string2; then
 echo westwood > /proc/sys/net/ipv4/tcp_congestion_control
 else
 	echo Westwood not avilable, using Cubic
