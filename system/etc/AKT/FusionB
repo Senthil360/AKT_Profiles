@@ -65,7 +65,7 @@ else
     echo Do not underclock!!! Set the clock speed to max and re-run the script.
     echo "===================================================="
 fi
-
+chmod 644 /sys/devices/system/cpu/cpu0/cpufreq/interactive/*
 echo -1 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/timer_slack
 echo 729600 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/hispeed_freq
 echo 20000 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/timer_rate
@@ -123,6 +123,7 @@ else
 #Set normal max frequency target_loads
 fi
 sleep 0.5
+chmod 644 /sys/devices/system/cpu/cpu2/cpufreq/interactive/*
 #Tweak Interactive Governor
 echo -1 > /sys/devices/system/cpu/cpu2/cpufreq/interactive/timer_slack
 echo 729600 > /sys/devices/system/cpu/cpu2/cpufreq/interactive/hispeed_freq
