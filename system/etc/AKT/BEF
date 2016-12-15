@@ -185,6 +185,7 @@ echo N > /sys/module/msm_thermal/parameters/enabled
 #Tweak HMP Scheduler
 sleep 0.3
 echo Tweaking HMP Scheduler for correcting BIG Cluster utilization
+chmod 644 /proc/sys/kernel/*
 echo 1 > /proc/sys/kernel/sched_window_stats_policy
 echo 35 > /proc/sys/kernel/sched_downmigrate
 echo 45 > /proc/sys/kernel/sched_upmigrate
@@ -296,10 +297,9 @@ else
 	echo ' *Adaptive LMK is not present on your Kernel* '
 fi
 echo ·TCP Values
-string2=$(</proc/sys/net/ipv4/tcp_available_congestion_control);
-if [[ $string2 == *"cubic"* ]]
-then
-echo cubic > /proc/sys/net/ipv4/tcp_congestion_control
+string2=/proc/sys/net/ipv4/tcp_available_congestion_control
+if $BB grep 'westwood' $string2; then
+   echo cubic > /proc/sys/net/ipv4/tcp_congestion_control
 else
 	echo cubic not avilable, using westwood
 	echo westwood > /proc/sys/net/ipv4/tcp_congestion_control 
