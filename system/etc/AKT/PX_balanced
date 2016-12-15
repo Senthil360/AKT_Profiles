@@ -242,18 +242,6 @@ fi
 sleep 0.5
 echo "=========================================="
 echo Tweaking other various Settings
-echo ·I/O Values
-if [ -e "/sys/devices/virtual/block/sda/queue/scheduler" ]; then
-string=$(</sys/devices/virtual/block/sda/queue/scheduler);
-if [[ $string == *"zen"* ]]
-then
-    echo zen > /sys/devices/virtual/block/dm-0/queue/scheduler
-    echo 300 > /sys/devices/virtual/block/dm-0/queue/iosched/sync_expire
-    echo 2100 > /sys/devices/virtual/block/dm-0/queue/iosched/async_expire
-    echo 12 > /sys/devices/virtual/block/dm-0/queue/iosched/fifo_batch
-    chmod 644 /sys/devices/virtual/block/dm-0/queue/iosched/sync_expire
-    echo 300 > /sys/devices/virtual/block/dm-0/queue/iosched/sync_expire
-else
 if [ -e /sys/devices/virtual/block/dm-0/queue/scheduler ]; then
     DM_PATH=/sys/devices/virtual/block/dm-0/queue
 fi
