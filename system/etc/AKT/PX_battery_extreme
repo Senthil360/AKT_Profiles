@@ -343,9 +343,8 @@ echo   You may now tweak them further
 echo    using EXKM or Kernel Adiutor
 echo ------------------------------------------------------------
 echo ""
-echo " Done,  press ENTER then close"
-sleep 2
-
+echo " Done, this will be automatically closed..."
+sleep 4
 #################################################
 #Modded by Asiier
 #Please say thanks and give proper credits if you're using this profile. 
