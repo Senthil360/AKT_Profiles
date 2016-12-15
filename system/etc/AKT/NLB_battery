@@ -8,13 +8,12 @@
 #So eventually after load is reduced  both clusters idle soon,  thus saving a lot of Battery
 #Other than Heavy games this profile could be used for any type of scenario, should result better battery life than stock with almost no drop in performance. 
 #TWEAKS_BEGIN
-BB=/system/etc/Nameless/busybox
+BB=/system/etc/AKT/busybox
 divider="==========================="
 if [ -e "/data/system/NLB" ]; then
     check=$($BB cat /data/system/NLB);
     kill - 9 "$check" 2>/dev/null
 fi
-while [ 5 == 5 ]; do
 echo $$ > /data/system/NLB
 echo "$divider"
 echo ""
@@ -178,5 +177,4 @@ sleep 0.5
 echo "Interactive *nameless* tweaks applied" > /data/system/nameless
 echo $date >> /data/system/nameless
 echo " Nameless Battery profile Activated"
-sleep 600
-done
+sleep 4
