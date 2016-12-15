@@ -15,8 +15,7 @@ sleep 2
 clear
 function Battery
 {
-option=0
-until [ "$option" = "7" ]; do
+while true; do
 echo -e "\e[01;31m   UP  Less Battery / More Performance \e[00;37m"
 echo -e "\e[01;32m   | \e[00;37m"
 echo -e "\e[01;32m   | \e[00;37m"
@@ -102,7 +101,6 @@ echo " You tell me what to add here"
 sleep 2;
 clear;;
 7 ) clear; main_menu;;
-8 ) clear; break ;;
 * ) clear; echo " Please, enter a valid option..."; 
 sleep 2;
 clear;;
@@ -112,8 +110,7 @@ esac
 }
 function Performance
 {
-option=0
-until [ "$option" = "4" ]; do
+while true; do
 echo -e "\e[01;31m   UP  Less Battery / More Performance \e[00;37m"
 echo -e "\e[01;32m   | \e[00;37m"
 echo -e "\e[01;32m   | \e[00;37m"
@@ -171,7 +168,6 @@ echo "Coming Soon"
 echo "You tell me what others tweaks you want me too add"
 sleep 5;;
 5 ) clear; main_menu;;
-6 ) break ;;
 * ) echo " Please, enter a valid option..."
 sleep 2
 esac
@@ -180,8 +176,7 @@ esac
 }
 function Balanced
 {
-option=0
-until [ "$option" = "6" ]; do
+while true; do
 echo -e "\e[01;31m   UP  Less Battery / More Performance \e[00;37m"
 echo -e "\e[01;32m   | \e[00;37m"
 echo -e "\e[01;32m   | \e[00;37m"
@@ -251,7 +246,6 @@ exit;;
 echo " You tell me what to add here"
 sleep 2;;
 6 ) clear; main_menu;;
-7 ) break ;;
 * ) echo " Please, enter a valid option..."
 sleep 2
 clear;;
@@ -326,8 +320,7 @@ case $option in
 esac
 done
  }
-
+ 
+while true; do
 main_menu
-exit
-esac
 done
