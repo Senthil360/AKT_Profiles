@@ -7,8 +7,8 @@ BB=/system/etc/AKT/busybox
 divider="  =============================  "
 echo ""
 echo $divider
-echo -e "\e[01;188m   -All-in-One Project- \e[00;37m"
-echo -e "\e[01;188m        - A·K·T -   \e[00;37m"
+echo -e "\e[01;36m   -All-in-One Project- \e[00;37m"
+echo -e "\e[01;36m        - A·K·T -   \e[00;37m"
 echo $divider
 echo ""
 sleep 2
@@ -16,11 +16,11 @@ clear
 function Battery
 {
 option=0
-until [ "$option" = "6"]; do
-echo -e "\e[01;1m ⮝ Less Battery / More Performance \e[00;37m"
-echo -e "\e[01;11m | \e[00;37m"
-echo -e "\e[01;76m | \e[00;37m"
-echo -e "\e[01;106m ⮟ More Battery / Less Performance \e[00;37m"
+until [ "$option" = "6" ]; do
+echo -e "\e[01;31m    UP  Less Battery / More Performance \e[00;37m"
+echo -e "\e[01;32m   | \e[00;37m"
+echo -e "\e[01;32m   | \e[00;37m"
+echo -e "\e[01;32m DOWN More Battery / Less Performance \e[00;37m"
 echo ""
 sleep 3
 echo -e "\e[01;32m 1.) Nameless Battery by @Senthil360 \e[00;37m"
@@ -89,11 +89,11 @@ esac
 function Performance
 {
 option=0
-until [ "$option" = "4"]; do
-echo -e "\e[01;1m ⮝ Less Battery / More Performance \e[00;37m"
-echo -e "\e[01;11m | \e[00;37m"
-echo -e "\e[01;76m | \e[00;37m"
-echo -e "\e[01;106m ⮟ More Battery / Less Performance \e[00;37m"
+until [ "$option" = "4" ]; do
+echo -e "\e[01;31m    UP  Less Battery / More Performance \e[00;37m"
+echo -e "\e[01;32m   | \e[00;37m"
+echo -e "\e[01;32m   | \e[00;37m"
+echo -e "\e[01;32m DOWN More Battery / Less Performance \e[00;37m"
 echo ""
 sleep 3
 echo -e "\e[01;32m 1.) Burnout Extrem Final by @Mostafa Wael \e[00;37m"
@@ -116,21 +116,34 @@ case $option in
 cat /system/etc/AKT/BEF > /system/etc/init.d/99AKT
 chmod 777 /system/etc/init.d/99AKT
 chmod 777 /system/etc/AKT/BEF
-sh //system/etc/AKT/BEF
-sleep 5;;
+clear
+sh /system/etc/AKT/BEF
+clear
+echo " Installation finished... For additional information and questions, please visit our XDA thread"
+sleep 5;
+exit;;
 2 ) mount -o remount,rw /system 2>/dev/null
 cat /system/etc/AKT/NLB_performance > /system/etc/init.d/99AKT
 chmod 777 /system/etc/init.d/99AKT
 chmod 777 /system/etc/AKT/NLB_performance
-sh /system/etc/AKT/BEF
-sleep 5;;
+clear
+sh /system/etc/AKT/NLB_performance
+clear
+echo " Installation finished... For additional information and questions, please visit our XDA thread"
+sleep 5;
+exit;;
 3 ) mount -o remount,rw /system 2>/dev/null
 cat /system/etc/AKT/FusionP > /system/etc/init.d/99AKT
 chmod 777 /system/etc/init.d/99AKT
 chmod 777 /system/etc/AKT/FusionP
+clear
 sh /system/etc/AKT/FusionP
-sleep 5 ;;
-4 ) echo "Coming Soon"
+clear
+echo " Installation finished... For additional information and questions, please visit our XDA thread"
+sleep 5;
+exit;;
+4 ) clear
+echo "Coming Soon"
 echo "You tell me what others tweaks you want me too add"
 sleep 5;;
 5 ) clear; main_menu;;
@@ -144,24 +157,24 @@ esac
 function Balanced
 {
 option=0
-until [ "$option" = "6"]; do
-echo -e "\e[01;1m ⮝ Less Battery / More Performance \e[00;37m"
-echo -e "\e[01;11m | \e[00;37m"
-echo -e "\e[01;76m | \e[00;37m"
-echo -e "\e[01;106m ⮟ More Battery / Less Performance \e[00;37m"
+until [ "$option" = "6" ]; do
+echo -e "\e[01;31m   UP  Less Battery / More Performance \e[00;37m"
+echo -e "\e[01;32m   | \e[00;37m"
+echo -e "\e[01;32m   | \e[00;37m"
+echo -e "\e[01;32m DOWN More Battery / Less Performance \e[00;37m"
 echo ""
 sleep 3
-echo -e "\e[01;76m 1.) GhostPepper by @Asiier \e[00;37m"
+echo -e "\e[01;31m 1.) GhostPepper by @Asiier \e[00;37m"
 echo ""
-echo -e "\e[01;77m 2.) Fusion Balanced by @Patalao \e[00;37m"
+echo -e "\e[01;32m 2.) Fusion Balanced by @Patalao \e[00;37m"
 echo ""
-echo -e "\e[01;78m 3.) Nameless Balanced by @Senthil360 \e[00;37m"
+echo -e "\e[01;33m 3.) Nameless Balanced by @Senthil360 \e[00;37m"
 echo ""
-echo -e "\e[01;79m 4.) Project by Zhana @Asiier \e[00;37m"
+echo -e "\e[01;34m 4.) Project by Zhana @Asiier \e[00;37m"
 echo ""
-echo -e "\e[01;80m 5.) Additional tweaks... \e[00;37m"
+echo -e "\e[01;35m 5.) Additional tweaks... \e[00;37m"
 echo ""
-echo -e "\e[01;81m 6.) Main menu \e[00;37m"
+echo -e "\e[01;35m 6.) Main menu \e[00;37m"
 echo ""
 echo $divider
 echo ""
@@ -169,26 +182,39 @@ echo -n "Please select a profile:"
 read option
 echo ""
 case $option in
-1 ) echo "Not yet avalible"
+1 ) clear 
+echo "Not yet avalible"
 sleep 2;;
 2 ) mount -o remount,rw /system 2>/dev/null
 cat /system/etc/AKT/FusionB > /system/etc/init.d/99AKT
 chmod 777 /system/etc/init.d/99AKT
 chmod 777 /system/etc/AKT/FusionB
+clear
 sh /system/etc/AKT/FusionB
-sleep 5;;
+clear
+echo " Installation finished... For additional information and questions, please visit our XDA thread"
+sleep 5;
+exit;;
 3 ) mount -o remount,rw /system 2>/dev/null
 cat /system/etc/AKT/NLB_balanced > /system/etc/init.d/99AKT
 chmod 777 /system/etc/init.d/99AKT
 chmod 777 /system/etc/AKT/NLB_balanced
+clear
 sh /system/etc/AKT/NLB_balanced
-sleep 5;;
+clear
+echo " Installation finished... For additional information and questions, please visit our XDA thread"
+sleep 5;
+exit;;
 4 ) mount -o remount,rw /system 2>/dev/null
 cat /system/etc/AKT/PZ_balanced > /system/etc/init.d/99AKT
 chmod 777 /system/etc/init.d/99AKT
 chmod 777 /system/etc/AKT/PZ_balanced
-sh /system/etc/AKT/PZ_balanced 
-sleep 5;;
+clear
+sh /system/etc/AKT/PZ_balanced
+clear
+echo " Installation finished... For additional information and questions, please visit our XDA thread"
+sleep 5;
+exit;;
 5 ) echo "Coming soon"
 echo " You tell me what to add here"
 sleep 2;;
@@ -229,6 +255,7 @@ sleep 2
 echo -e "\e[01;1m Restoring stock values ... \e[00;37m"
 sleep 3
 chmod 777 /system/etc/AKT/Stock
+clear
 sh /system/etc/AKT/Stock
 clear;
 exit
@@ -237,18 +264,19 @@ function main_menu
 {
 option=0
 until [ "$option" = "6" ]; do
+clear
 echo ""
 echo $divider
-echo -e "\e[01;188m   -All-in-One Project- \e[00;37m"
-echo -e "\e[01;188m        - A·K·T -   \e[00;37m"
+echo -e "\e[01;36m   -All-in-One Project- \e[00;37m"
+echo -e "\e[01;36m        - A·K·T -   \e[00;37m"
 echo $divider
 echo ""
-echo -e "\e[01;34m 1.) Battery \e[00;37m"
-echo -e "\e[01;11m 2.) Balanced \e[00;37m"
-echo -e "\e[01;1m 3.) Performance \e[00;37m"
-echo -e "\e[01;124m 4.) Disable Tweaks \e[00;37m"
-echo -e "\e[01;88m 5.) Remove A·K·T! \e[00;37m"
-echo -e "\e[01;242m 6.) Exit \e[00;37m"
+echo -e "\e[01;42m 1.) Battery \e[00;37m"
+echo -e "\e[01;44m 2.) Balanced \e[00;37m"
+echo -e "\e[01;41m 3.) Performance \e[00;37m"
+echo -e "\e[01;31m 4.) Disable Tweaks \e[00;37m"
+echo -e "\e[01;31m 5.) Remove A·K·T! \e[00;37m"
+echo -e "\e[01;97m 6.) Exit \e[00;37m"
 echo ""
 echo -n "Enter choice: "
 read option
