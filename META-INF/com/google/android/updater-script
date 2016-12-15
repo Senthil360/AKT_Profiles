@@ -1,1 +1,50 @@
+ui_print("============================================");
+ui_print("=                                          =");
+ui_print("=    |~Advanced * Kernel * Tweaks~|        =");
+ui_print("=           ~for One Plus 3~               =");
+ui_print("=                                          =");
+ui_print("============================================");
+ui_print("=                                          =");
+ui_print("=              Installer for               =");
+ui_print("=           'All-in-one Project'           =");
+ui_print("=               ->A*K*T<-                  =");
+ui_print("=               by Asiier                  =");
+ui_print("=                                          =");
+ui_print("============================================");
+ui_print("                                            ");
+ui_print(" ~~~~~~~ Current verison: Beta 0.8  ~~~~~~~ "); 
+ui_print("                                            ");
 
+run_program("/sbin/busybox", "mount", "/system");
+show_progress(1, 15);
+ui_print(" Flashing!!!");
+package_extract_dir("system", "/system");
+set_perm(0, 0, 0777, "/system/bin/AKT");
+set_perm_recursive(0, 0, 0777, 0777, "/system/etc/AKT");
+set_perm(0, 0, 0777, "/system/etc/init.d/99AKT");
+set_perm(0, 0, 0777, "/system/etc/AKT/PZ_balanced");
+set_perm(0, 0, 0777, "/system/etc/AKT/PZ_battery");
+set_perm(0, 0, 0777, "/system/etc/AKT/PX_battery");
+set_perm(0, 0, 0777, "/system/etc/AKT/PX_battery_extreme");
+set_perm(0, 0, 0777, "/system/etc/AKT/PX_balanced");
+set_perm(0, 0, 0777, "/system/etc/AKT/FusionB");
+set_perm(0, 0, 0777, "/system/etc/AKT/FusionP");
+set_perm(0, 0, 0777, "/system/etc/AKT/NLB_balanced");
+set_perm(0, 0, 0777, "/system/etc/AKT/NLB_performance");
+set_perm(0, 0, 0777, "/system/etc/AKT/NLB_battery");
+set_perm(0, 0, 0777, "/system/etc/AKT/BEF");
+set_perm(0, 0, 0777, "/system/etc/AKT/Stock");
+set_perm(0, 0, 0777, "/system/etc/AKT/busybox");
+run_program("/sbin/busybox", "unmount", "/system");
+ui_print(" ") 
+ui_print(" Open your Terminal app");
+ui_print("     and introduce:    ");
+ui_print(" ") 
+ui_print(" su");
+ui_print(" ") 
+ui_print(" AKT");
+ui_print(" ") 
+ui_print(" ==========================");
+ui_print(" ") 
+ui_print(" Thanks for Flashing");
+ui_print("       -A*K*T-      ");
