@@ -1,0 +1,82 @@
+Signature-Version: 1.0
+Created-By: 1.0 (Android SignApk)
+SHA1-Digest-Manifest: CLZNc7wJbY0vfr/QkXkBqjkwMqo=
+
+Name: system/lib/libtalk_jni.so
+SHA1-Digest: dNiRn24T8mUhAqozFxkDKhtmWKw=
+
+Name: system/app/OneTimeInitializer.apk
+SHA1-Digest: tyI/IKpQS/g2Wx+/b9gIrR4EiPk=
+
+Name: system/app/GoogleCalendarSyncAdapter.apk
+SHA1-Digest: jYSN3kJ6UGQx5UH/+C9Cpu2TM5o=
+
+Name: system/app/GoogleContactsSyncAdapter.apk
+SHA1-Digest: HgWCzD6P/9L4p5ilMdcL24UWxTg=
+
+Name: system/lib/libvoicesearch.so
+SHA1-Digest: OhKQ++FZwq7QedwPzRX2K0GTv60=
+
+Name: system/framework/com.google.android.maps.jar
+SHA1-Digest: /nFSrWio56sL0pMWlAKpuqiJumY=
+
+Name: system/etc/permissions/features.xml
+SHA1-Digest: 9PFuuyZLB2UDIBe9NEvwK1YycF0=
+
+Name: system/app/Vending.apk
+SHA1-Digest: KrE9FswgwzwlWP67KXkWQmf6yos=
+
+Name: META-INF/com/google/android/updater-script
+SHA1-Digest: Ns2Ay/iE4WNV/OANWDvoi0Wq/Ec=
+
+Name: system/app/GoogleQuickSearchBox.apk
+SHA1-Digest: /PNSXPMk/n3cRH1yGYYQRtfq448=
+
+Name: system/app/FOTAKill.apk
+SHA1-Digest: 1IefDXzWeZPYbZ2oEGE7SfvV8us=
+
+Name: system/app/MediaUploader.apk
+SHA1-Digest: cINxZ71SqVI2s8wSEumGtcrfPGE=
+
+Name: system/app/GooglePartnerSetup.apk
+SHA1-Digest: laF8lIf29u1Uq+C+GMVF6JxMxps=
+
+Name: system/app/GoogleServicesFramework.apk
+SHA1-Digest: ejZROvWocZhIfCTL4/kr5OiQHjY=
+
+Name: META-INF/com/google/android/update-binary
+SHA1-Digest: CSZ7Gyg6X76HeNNSMKPZaNDGFlI=
+
+Name: system/app/NetworkLocation.apk
+SHA1-Digest: 7FxpOOdZlpkc6ZXrMPJXkAnX9lc=
+
+Name: system/app/GenieWidget.apk
+SHA1-Digest: D6J87fg09pv7svTlA0o5/bZ+NH4=
+
+Name: system/app/LatinImeTutorial.apk
+SHA1-Digest: kBXaA8/2XHxuFWh+Sv2ze7LJ4Eo=
+
+Name: system/app/SetupWizard.apk
+SHA1-Digest: 5NpIB8s508LQAFrrZ6cXnqUv9PE=
+
+Name: system/etc/permissions/com.google.android.maps.xml
+SHA1-Digest: QaPNB5FUfwkZ5T3fG1bXJpF8pNY=
+
+Name: system/app/BooksPhone.apk
+SHA1-Digest: 4GWsPdEffdcHBPRu++QsLWpR9tE=
+
+Name: system/app/MarketUpdater.apk
+SHA1-Digest: YorQnqPVf7lvoTNM8XOkx2b3T98=
+
+Name: system/app/GoogleBackupTransport.apk
+SHA1-Digest: +CWtD9SuOu416NfrVywkyZ1Pl3c=
+
+Name: system/app/Talk.apk
+SHA1-Digest: /hTRuD13g+TfjIDqv35uehr3nxQ=
+
+Name: system/app/GoogleFeedback.apk
+SHA1-Digest: 8d8xO2l2776WDlAT5alrkAT9cv8=
+
+Name: system/app/CarHomeGoogle.apk
+SHA1-Digest: Ocpwqn+OV3xFGMQCqsOBAkZ3dlw=
+

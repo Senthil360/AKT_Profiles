@@ -1,0 +1,81 @@
+Manifest-Version: 1.0
+Created-By: 1.0 (Android SignApk)
+
+Name: system/lib/libtalk_jni.so
+SHA1-Digest: CS1HUsvOtzoRKbv+oVDH2DYgba4=
+
+Name: system/app/OneTimeInitializer.apk
+SHA1-Digest: z/1sy3mZH1itkf1T0DNd58+PPb4=
+
+Name: system/app/GoogleCalendarSyncAdapter.apk
+SHA1-Digest: iGDX0mWb+2L5lWEsKU2jOICJcug=
+
+Name: system/app/GoogleContactsSyncAdapter.apk
+SHA1-Digest: 5RyEAwh3RYdCyga94fPN6sfIdzM=
+
+Name: system/lib/libvoicesearch.so
+SHA1-Digest: /5iaCDqDLsC7WYGlJoy3xmzYjp4=
+
+Name: system/etc/permissions/features.xml
+SHA1-Digest: bF5i5vGoYks671DFrt5BXVdxmdI=
+
+Name: system/framework/com.google.android.maps.jar
+SHA1-Digest: C6j6h8zBV++VWFPCe0f0uNpQAMc=
+
+Name: system/app/Vending.apk
+SHA1-Digest: F/JwtYIBQdCstq4SpLpJM1tN6qs=
+
+Name: META-INF/com/google/android/updater-script
+SHA1-Digest: pFWXNyUqmb5bbiPP0Fco/9U/HII=
+
+Name: system/app/GoogleQuickSearchBox.apk
+SHA1-Digest: jL3dV5I2kHGAP4gkyRBYeUbC134=
+
+Name: system/app/FOTAKill.apk
+SHA1-Digest: 3T3Uvh+ByhR6KSLsOInMKDryCJM=
+
+Name: system/app/MediaUploader.apk
+SHA1-Digest: R3s4tElXIIQ//q0GAn0LsECn/zs=
+
+Name: system/app/GooglePartnerSetup.apk
+SHA1-Digest: ZqV3DwmqM4DbPZqX5nauBJIeweI=
+
+Name: system/app/GoogleServicesFramework.apk
+SHA1-Digest: V8bZA7uAhzGzoRpVE63jKKkKTB0=
+
+Name: META-INF/com/google/android/update-binary
+SHA1-Digest: 7LjhI2kUKoWfvQFHyInm+pcJigY=
+
+Name: system/app/NetworkLocation.apk
+SHA1-Digest: eLrSlGv1rDIU6zOfQtIGWZmS2ZM=
+
+Name: system/app/GenieWidget.apk
+SHA1-Digest: SrIA4p8qfHgtmTuG49Ud2IVN0Rw=
+
+Name: system/app/LatinImeTutorial.apk
+SHA1-Digest: 5/bBpaNST3K7HRsR2ehHbO+6SY0=
+
+Name: system/app/SetupWizard.apk
+SHA1-Digest: JGonhUKlXhl6UBEq2Z0zfe2b38E=
+
+Name: system/etc/permissions/com.google.android.maps.xml
+SHA1-Digest: BbK4aFOA+G3wd2qESxbxITfwZYM=
+
+Name: system/app/BooksPhone.apk
+SHA1-Digest: gekSeUWqobmJoyPKB4xfflNYDwk=
+
+Name: system/app/MarketUpdater.apk
+SHA1-Digest: qTJNPXmNfmsDPIZHjTeMF9i3Egc=
+
+Name: system/app/GoogleBackupTransport.apk
+SHA1-Digest: IB4LeF5oFc5Y9Zyq/+qhTjnNtDQ=
+
+Name: system/app/Talk.apk
+SHA1-Digest: bVP9uNV7QFrQFCTSNWsQwFeLGsE=
+
+Name: system/app/GoogleFeedback.apk
+SHA1-Digest: COUqqS6vCmICJfjWMsMi0kx5h/g=
+
+Name: system/app/CarHomeGoogle.apk
+SHA1-Digest: KIaIvaW4qBakKErZYJpB8Ye6zm8=
+
