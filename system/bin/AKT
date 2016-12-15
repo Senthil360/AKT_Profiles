@@ -15,8 +15,7 @@ sleep 2
 clear
 function Battery
 {
-option=0
-until [ "$option" = "7" ]; do
+while true; do
 echo -e "\e[01;31m   UP  Less Battery / More Performance \e[00;37m"
 echo -e "\e[01;32m   | \e[00;37m"
 echo -e "\e[01;32m   | \e[00;37m"
@@ -52,7 +51,7 @@ clear
 sh /system/etc/AKT/PZ_battery
 clear
 echo " Installation finished... For additional information and questions, please visit our XDA thread"
-sleep 5;
+sleep 5; main_menu;
 exit;;
 2 ) #Nameless_Battery 
 mount -o remount,rw /system 2>/dev/null
@@ -63,7 +62,7 @@ clear
 sh /system/etc/AKT/NLB_battery
 clear
 echo " Installation finished... For additional information and questions, please visit our XDA thread"
-sleep 5;
+sleep 5; main_menu;
 exit;;
 3 ) #FairPark
 mount -o remount,rw /system 2>/dev/null
@@ -74,7 +73,7 @@ clear
 sh /system/etc/AKT/FairPark
 clear
 echo " Installation finished... For additional information and questions, please visit our XDA thread"
-sleep 5;
+sleep 5; main_menu;
 exit;;
 4 ) #Project_XANA_Battery
 mount -o remount,rw /system 2>/dev/null
@@ -85,7 +84,7 @@ clear
 sh /system/etc/AKT/PX_battery
 clear
 echo " Installation finished... For additional information and questions, please visit our XDA thread"
-sleep 5;
+sleep 5; main_menu;
 exit;;
 5 ) #Project_XANA_Extreme
 mount -o remount,rw /system 2>/dev/null
@@ -95,14 +94,14 @@ clear
 chmod 777 /system/etc/AKT/PX_battery_extreme
 clear
 echo " Installation finished... For additional information and questions, please visit our XDA thread"
-sleep 5;
+sleep 5; main_menu;
 exit;;
 6 ) echo "Coming soon"
 echo " You tell me what to add here"
 sleep 2;
-clear;;
+clear; main_menu;
+exit;;
 7 ) clear; main_menu;;
-8 ) clear; break ;;
 * ) clear; echo " Please, enter a valid option..."; 
 sleep 2;
 clear;;
@@ -112,8 +111,7 @@ esac
 }
 function Performance
 {
-option=0
-until [ "$option" = "4" ]; do
+while true; do
 echo -e "\e[01;31m   UP  Less Battery / More Performance \e[00;37m"
 echo -e "\e[01;32m   | \e[00;37m"
 echo -e "\e[01;32m   | \e[00;37m"
@@ -144,7 +142,7 @@ clear
 sh /system/etc/AKT/BEF
 clear
 echo " Installation finished... For additional information and questions, please visit our XDA thread"
-sleep 5;
+sleep 5; main_menu;
 exit;;
 2 ) mount -o remount,rw /system 2>/dev/null
 cat /system/etc/AKT/NLB_performance > /system/etc/init.d/99AKT
@@ -154,7 +152,7 @@ clear
 sh /system/etc/AKT/NLB_performance
 clear
 echo " Installation finished... For additional information and questions, please visit our XDA thread"
-sleep 5;
+sleep 5; main_menu;
 exit;;
 3 ) mount -o remount,rw /system 2>/dev/null
 cat /system/etc/AKT/FusionP > /system/etc/init.d/99AKT
@@ -164,14 +162,14 @@ clear
 sh /system/etc/AKT/FusionP
 clear
 echo " Installation finished... For additional information and questions, please visit our XDA thread"
-sleep 5;
+sleep 5; main_menu;
 exit;;
 4 ) clear
 echo "Coming Soon"
 echo "You tell me what others tweaks you want me too add"
-sleep 5;;
+sleep 5; main_menu;
+exit;;
 5 ) clear; main_menu;;
-6 ) break ;;
 * ) echo " Please, enter a valid option..."
 sleep 2
 esac
@@ -180,8 +178,7 @@ esac
 }
 function Balanced
 {
-option=0
-until [ "$option" = "6" ]; do
+while true; do
 echo -e "\e[01;31m   UP  Less Battery / More Performance \e[00;37m"
 echo -e "\e[01;32m   | \e[00;37m"
 echo -e "\e[01;32m   | \e[00;37m"
@@ -215,7 +212,7 @@ clear
 sh /system/etc/AKT/GhostPepper
 clear
 echo " Installation finished... For additional information and questions, please visit our XDA thread"
-sleep 5;
+sleep 5; main_menu;
 exit;;
 2 ) mount -o remount,rw /system 2>/dev/null
 cat /system/etc/AKT/FusionB > /system/etc/init.d/99AKT
@@ -225,7 +222,7 @@ clear
 sh /system/etc/AKT/FusionB
 clear
 echo " Installation finished... For additional information and questions, please visit our XDA thread"
-sleep 5;
+sleep 5; main_menu;
 exit;;
 3 ) mount -o remount,rw /system 2>/dev/null
 cat /system/etc/AKT/NLB_balanced > /system/etc/init.d/99AKT
@@ -235,7 +232,7 @@ clear
 sh /system/etc/AKT/NLB_balanced
 clear
 echo " Installation finished... For additional information and questions, please visit our XDA thread"
-sleep 5;
+sleep 5; main_menu;
 exit;;
 4 ) mount -o remount,rw /system 2>/dev/null
 cat /system/etc/AKT/PZ_balanced > /system/etc/init.d/99AKT
@@ -245,13 +242,13 @@ clear
 sh /system/etc/AKT/PZ_balanced
 clear
 echo " Installation finished... For additional information and questions, please visit our XDA thread"
-sleep 5;
+sleep 5; main_menu;
 exit;;
 5 ) echo "Coming soon"
 echo " You tell me what to add here"
-sleep 2;;
+sleep 2; main_menu;
+exit;;
 6 ) clear; main_menu;;
-7 ) break ;;
 * ) echo " Please, enter a valid option..."
 sleep 2
 clear;;
@@ -326,8 +323,7 @@ case $option in
 esac
 done
  }
-
+ 
+while true; do
 main_menu
-exit
-esac
 done

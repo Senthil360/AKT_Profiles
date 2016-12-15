@@ -185,7 +185,6 @@ echo N > /sys/module/msm_thermal/parameters/enabled
 #Tweak HMP Scheduler
 sleep 0.3
 echo Tweaking HMP Scheduler for correcting BIG Cluster utilization
-chmod 644 /proc/sys/kernel/*
 echo 1 > /proc/sys/kernel/sched_window_stats_policy
 echo 35 > /proc/sys/kernel/sched_downmigrate
 echo 45 > /proc/sys/kernel/sched_upmigrate
