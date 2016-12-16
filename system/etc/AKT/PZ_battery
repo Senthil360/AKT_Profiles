@@ -348,7 +348,7 @@ fi
 sleep 1
 echo ------------------------------------------------------------
 echo 'Project Zhana v3.3' Successfully Applied!
-echo "Zhana Balanced" > /data/system/current_profile
+echo "Zhana Battery" > /data/system/current_profile
 echo   You may now tweak them further
 echo    using EXKM or Kernel Adiutor
 echo ------------------------------------------------------------
