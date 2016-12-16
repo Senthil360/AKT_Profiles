@@ -346,7 +346,8 @@ if grep -q 'ro.build.version.sdk=23' /system/build.prop; then
 fi
 sleep 1
 echo ------------------------------------------------------------
-echo 'GhostPepper v2.0' Successfully Applied! 
+echo 'GhostPepper v2.0' Successfully Applied!
+echo "GhostPepper V2.0" > /data/system/current_profile
 echo   You may now tweak them further
 echo    using EXKM or Kernel Adiutor
 echo ------------------------------------------------------------
