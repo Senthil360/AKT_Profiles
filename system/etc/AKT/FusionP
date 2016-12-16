@@ -356,7 +356,8 @@ if grep -q 'ro.build.version.sdk=23' /system/build.prop; then
 fi
 sleep 1
 echo ------------------------------------------------------------
-echo 'FusionP' Successfully Applied! 
+echo 'FusionP' Successfully Applied!
+echo "FusionP" > /data/system/current_profile
 echo   You may now tweak them further
 echo    using EXKM or Kernel Adiutor
 echo ------------------------------------------------------------

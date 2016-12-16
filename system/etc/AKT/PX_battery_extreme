@@ -338,7 +338,8 @@ if grep -q 'ro.build.version.sdk=23' /system/build.prop; then
 fi
 sleep 1
 echo ------------------------------------------------------------
-echo 'Project X.A.N.A v3.3' Successfully Applied! 
+echo 'Project X.A.N.A v3.3' Successfully Applied!
+echo "XANA Battery Extreme" > /data/system/current_profile
 echo   You may now tweak them further
 echo    using EXKM or Kernel Adiutor
 echo ------------------------------------------------------------

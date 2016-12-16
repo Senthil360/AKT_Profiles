@@ -346,7 +346,8 @@ if grep -q 'ro.build.version.sdk=23' /system/build.prop; then
 fi
 sleep 1
 echo ------------------------------------------------------------
-echo 'FairPark v2.5' Successfully Applied! 
+echo 'FairPark v2.5' Successfully Applied!
+echo "FairPark v2.5" > /data/system/current_profile 
 echo   You may now tweak them further
 echo    using EXKM or Kernel Adiutor
 echo ------------------------------------------------------------

@@ -176,5 +176,6 @@ echo ""
 sleep 0.5
 echo "Interactive *nameless* tweaks applied" > /data/system/nameless
 echo $date >> /data/system/nameless
+echo "Nameless Balanced" > /data/system/current_profile
 echo "Nameless Balanced profile Active"
 sleep 4
