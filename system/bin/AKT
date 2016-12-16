@@ -7,8 +7,9 @@ BB=/system/etc/AKT/busybox
 divider="  =============================  "
 echo ""
 echo $divider
-echo -e "\e[01;36m   -All-in-One Project- \e[00;37m"
-echo -e "\e[01;36m        - A·K·T -   \e[00;37m"
+echo -e "\e[01;36m   - All-in-One Project - \e[00;37m"
+echo -e "\e[01;36m - Advanced·Kernel·Tweaks - \e[00;37m"
+echo -e "\e[01;36m          - A·K·T -   \e[00;37m"
 echo $divider
 echo ""
 sleep 2
@@ -16,25 +17,19 @@ clear
 function Battery
 {
 while true; do
-echo -e "\e[01;31m   UP  Less Battery / More Performance \e[00;37m"
-echo -e "\e[01;32m   | \e[00;37m"
-echo -e "\e[01;32m   | \e[00;37m"
-echo -e "\e[01;32m DOWN More Battery / Less Performance \e[00;37m"
+echo -e "\e[01;91m   UP  Less Battery / More Performance \e[00;37m"
+echo -e "\e[01;33m   | \e[00;37m"
+echo -e "\e[01;93m   | \e[00;37m"
+echo -e "\e[01;92m DOWN More Battery / Less Performance \e[00;37m"
 echo ""
 sleep 3
-echo -e "\e[01;32m 1.) Project Zhana Battery by @Asiier \e[00;37m"
-echo ""
-echo -e "\e[01;34m 2.) Nameless Battery by @Senthil360  \e[00;37m"
-echo ""
-echo -e "\e[01;32m 3.) FairPark by @Asiier \e[00;37m"
-echo ""
-echo -e "\e[01;32m 4.) Project X.A.N.A Battery by @Asiier \e[00;37m"
-echo ""
-echo -e "\e[01;34m 5.) Project X.A.N.A Battery Extreme by @Asiier \e[00;37m"
-echo ""
-echo -e "\e[01;35m 6.) Additional tweaks... \e[00;37m"
-echo ""
-echo -e "\e[01;35m 7.) Main menu \e[00;37m"
+echo -e "\e[02;91m 1.) Project Zhana Battery by @Asiier \e[00;37m"
+echo -e "\e[01;31m 2.) Nameless Battery by @Senthil360  \e[00;37m"
+echo -e "\e[02;33m 3.) FairPark by @Asiier \e[00;37m"
+echo -e "\e[01;93m 4.) Project X.A.N.A Battery by @Asiier \e[00;37m"
+echo -e "\e[01;92m 5.) Project X.A.N.A Battery Extreme by @Asiier \e[00;37m"
+echo -e "\e[01;90m 6.) Additional tweaks... \e[00;37m"
+echo -e "\e[01;94m 7.) Main menu \e[00;37m"
 echo ""
 echo $divider
 echo ""
@@ -112,21 +107,17 @@ esac
 function Performance
 {
 while true; do
-echo -e "\e[01;31m   UP  Less Battery / More Performance \e[00;37m"
-echo -e "\e[01;32m   | \e[00;37m"
-echo -e "\e[01;32m   | \e[00;37m"
-echo -e "\e[01;32m DOWN More Battery / Less Performance \e[00;37m"
+echo -e "\e[01;91m   UP  Less Battery / More Performance \e[00;37m"
+echo -e "\e[01;33m   | \e[00;37m"
+echo -e "\e[01;93m   | \e[00;37m"
+echo -e "\e[01;92m DOWN More Battery / Less Performance \e[00;37m"
 echo ""
 sleep 3
-echo -e "\e[01;32m 1.) Burnout PR2 Golden by @Mostafa Wael \e[00;37m"
-echo ""
-echo -e "\e[01;32m 2.) Nameless Perfomance by @Senthil360 \e[00;37m"
-echo ""
-echo -e "\e[01;34m 3.) Fusion Performance by @Patalao \e[00;37m"
-echo ""
-echo -e "\e[01;35m 4.) Additional tweaks... \e[00;37m"
-echo ""
-echo -e "\e[01;35m 5.) Main menu \e[00;37m"
+echo -e "\e[01;91m 1.) Burnout PR2 Golden by @Mostafa Wael \e[00;37m"
+echo -e "\e[01;33m 2.) Nameless Perfomance by @Senthil360 \e[00;37m"
+echo -e "\e[01;92m 3.) Fusion Performance by @Patalao \e[00;37m"
+echo -e "\e[01;90m 4.) Additional tweaks... \e[00;37m"
+echo -e "\e[01;94m 5.) Main menu \e[00;37m"
 echo ""
 echo $divider
 echo ""
@@ -179,23 +170,18 @@ esac
 function Balanced
 {
 while true; do
-echo -e "\e[01;31m   UP  Less Battery / More Performance \e[00;37m"
-echo -e "\e[01;32m   | \e[00;37m"
-echo -e "\e[01;32m   | \e[00;37m"
-echo -e "\e[01;32m DOWN More Battery / Less Performance \e[00;37m"
+echo -e "\e[01;91m   UP  Less Battery / More Performance \e[00;37m"
+echo -e "\e[01;33m   | \e[00;37m"
+echo -e "\e[01;93m   | \e[00;37m"
+echo -e "\e[01;92m DOWN More Battery / Less Performance \e[00;37m"
 echo ""
 sleep 3
-echo -e "\e[01;31m 1.) GhostPepper by @Asiier \e[00;37m"
-echo ""
-echo -e "\e[01;32m 2.) Fusion Balanced by @Patalao \e[00;37m"
-echo ""
-echo -e "\e[01;33m 3.) Nameless Balanced by @Senthil360 \e[00;37m"
-echo ""
-echo -e "\e[01;34m 4.) Project by Zhana @Asiier \e[00;37m"
-echo ""
-echo -e "\e[01;35m 5.) Additional tweaks... \e[00;37m"
-echo ""
-echo -e "\e[01;35m 6.) Main menu \e[00;37m"
+echo -e "\e[01;91m 1.) GhostPepper by @Asiier \e[00;37m"
+echo -e "\e[01;33m 2.) Fusion Balanced by @Patalao \e[00;37m"
+echo -e "\e[01;93m 3.) Nameless Balanced by @Senthil360 \e[00;37m"
+echo -e "\e[01;92m 4.) Project by Zhana @Asiier \e[00;37m"
+echo -e "\e[01;90m 5.) Additional tweaks... \e[00;37m"
+echo -e "\e[01;94m 6.) Main menu \e[00;37m"
 echo ""
 echo $divider
 echo ""
@@ -263,9 +249,9 @@ chmod 000 /system/etc/init.d/99AKT
 rm -rf /system/etc/init.d/99AKT
 rm -rf /system/etc/AKT
 rm -rf /system/bin/AKT
-echo -e "\e[01;1m Permission resetted... \e[00;37m"
-echo -e "\e[01;1m Files removed from /sytem ... \e[00;37m"
-echo -e "\e[01;1m Please, reboot the device for fully removing the tweaks... \e[00;37m"
+echo -e "\e[01;31m Permission resetted... \e[00;37m"
+echo -e "\e[01;31m Files removed from /sytem ... \e[00;37m"
+echo -e "\e[01;31m Please, reboot the device for fully removing the tweaks... \e[00;37m"
 sleep 3
 mount -o remount,ro /system 2>/dev/null
 clear;
@@ -277,11 +263,11 @@ echo ""
 mount -o remount,rw /system 2>/dev/null
 cat /system/etc/AKT/DisableInitd > /system/ect/init.d/99AKT
 chmod 644 /system/etc/init.d/99AKT
-echo -e "\e[01;1m Permission resetted... \e[00;37m"
-echo -e "\e[01;1m File overwritten ... \e[00;37m"
-echo -e "\e[01;1m It's recommended to perform a reboot for disabling the tweaks \e[00;37m"
+echo -e "\e[01;31m Permission resetted... \e[00;37m"
+echo -e "\e[01;31m File overwritten ... \e[00;37m"
+echo -e "\e[01;31m It's recommended to perform a reboot for disabling the tweaks \e[00;37m"
 sleep 2
-echo -e "\e[01;1m Restoring stock values ... \e[00;37m"
+echo -e "\e[02;39m Restoring stock values ... \e[00;37m"
 sleep 3
 chmod 777 /system/etc/AKT/Stock
 clear
@@ -296,16 +282,16 @@ until [ "$option" = "6" ]; do
 clear
 echo ""
 echo $divider
-echo -e "\e[01;36m   -All-in-One Project- \e[00;37m"
-echo -e "\e[01;36m        - A·K·T -   \e[00;37m"
+echo -e "\e[01;36m - Advanced·Kernel·Tweaks - \e[00;37m"
+echo -e "\e[01;36m          - A·K·T -   \e[00;37m"
 echo $divider
 echo ""
-echo -e "\e[01;42m 1.) Battery \e[00;37m"
-echo -e "\e[01;44m 2.) Balanced \e[00;37m"
-echo -e "\e[01;41m 3.) Performance \e[00;37m"
-echo -e "\e[01;31m 4.) Disable Tweaks \e[00;37m"
-echo -e "\e[01;31m 5.) Remove A·K·T! \e[00;37m"
-echo -e "\e[01;97m 6.) Exit \e[00;37m"
+echo -e "\e[01;32m 1.) Battery \e[00;37m"
+echo -e "\e[01;34m 2.) Balanced \e[00;37m"
+echo -e "\e[01;91m 3.) Performance \e[00;37m"
+echo -e "\e[02;36m 4.) Disable Tweaks \e[00;37m"
+echo -e "\e[01;90m 5.) Remove A·K·T! \e[00;37m"
+echo -e "\e[01;94m 6.) Exit \e[00;37m"
 echo ""
 echo -n "Enter choice: "
 read option
