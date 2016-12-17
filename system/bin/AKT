@@ -297,13 +297,13 @@ echo -e "\e[01;37m 4. Disable Tweaks \e[00;37m"
 echo ""
 echo -e "\e[01;37m 5. Remove A·K·T! \e[00;37m"
 echo ""
-echo -e "\e[00;37m 6. Exit \e[00;37m"
+echo -e "\e[00;36m 6. Exit \e[00;37m"
 echo ""
 if [ -e /data/system/current_profile ]; then
  echo $divider
  echo ""
  string3=$($BB cat /data/system/current_profile)
- echo -e "Current Profile  :  \e[00;35m $string3 \e[00;37m"
+ echo -e " Current Profile:  \e[04;94m $string3 \e[00;37m"
  echo ""
  echo $divider
 fi
