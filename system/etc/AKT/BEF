@@ -1,18 +1,14 @@
 #!/system/bin/sh
 #Interactive Governor tweaks for OnePlus 3.
-#Fusion profiles are set for a balanced and performance use.
-#FusionB, FusionP and Stock settings are present in this script.
-#FusionB is tweaked in a way that Cluster 1 (small) uses mostly the frequencies from 307 to 1324 and when needed, Cluster 2(big) enters to help, using frequencies up to 1632 and jumping above that when extreme load is present.
-#FusionP is still in development
 #Stock are the stock settings from ElementalX kernel
-#Scripts made by Senthil360 and Asiier and changed by patalao
+#Scripts made by Senthil360 and Asiier and changed by Mostafa Wael
 #Credits for @Asiier/@Mostafa Wael/@Senthil360
 #TWEAKS_BEGIN
 echo ""
-echo ------------------------------------------------------------
-echo Applying 'Stock (Stock ElementalX values)'
-echo Advanced Interactive Governor Settings
-echo ------------------------------------------------------------
+echo --------------------------------------------
+echo Applying 'Burnout PR2 Golden'
+echo Advanced Kernel Settings
+echo --------------------------------------------
 sleep 0.5
 echo Device: One Plus 3
 echo ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -67,7 +63,9 @@ else
 fi
 chmod 644 /sys/devices/system/cpu/cpu0/cpufreq/interactive/*
 echo 80000 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/timer_slack
+chmod 644 /sys/devices/system/cpu/cpu0/cpufreq/interactive/target_loads
 echo 40 652800:72 1324800:75 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/target_loads
+chmod 444 /sys/devices/system/cpu/cpu0/cpufreq/interactive/target_loads
 echo 20000 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/timer_rate
 echo 0 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/above_hispeed_delay
 echo 87 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/go_hispeed_load
@@ -126,7 +124,9 @@ sleep 0.5
 #Tweak Interactive Governor
 chmod 644 /sys/devices/system/cpu/cpu2/cpufreq/interactive/*
 echo 80000 > /sys/devices/system/cpu/cpu2/cpufreq/interactive/timer_slack
+chmod 644 /sys/devices/system/cpu/cpu2/cpufreq/interactive/target_loads
 echo 60 1190400:72 1920000:75 > /sys/devices/system/cpu/cpu2/cpufreq/interactive/target_loads
+chmod 444 /sys/devices/system/cpu/cpu2/cpufreq/interactive/target_loads
 echo 20000 > /sys/devices/system/cpu/cpu2/cpufreq/interactive/timer_rate
 echo 0 > /sys/devices/system/cpu/cpu2/cpufreq/interactive/above_hispeed_delay
 echo 80 > /sys/devices/system/cpu/cpu2/cpufreq/interactive/go_hispeed_load
@@ -361,8 +361,8 @@ if grep -q 'ro.build.version.sdk=23' /system/build.prop; then
 fi
 sleep 1
 echo ------------------------------------------------------------
-echo 'Burnout_PR2_golden' Successfully Applied!
-echo "Burnout_PR2_golden" > /data/system/current_profile
+echo 'Burnout PR2 golden' Successfully Applied!
+echo "Burnout PR2 golden" > /data/system/current_profile
 echo   You may now tweak them further
 echo    using EXKM or Kernel Adiutor
 echo ------------------------------------------------------------
