@@ -328,7 +328,7 @@ if [ -e /data/system/current_profile ]; then
  echo $divider
  echo ""
  string3=$($BB cat /data/system/current_profile)
- echo -e " Current Profile:  '\e[04;94m$string3\e[00;37m"'
+ echo -e " Current Profile:  '\e[04;94m$string3\e[00;37m'"
  echo ""
  echo $divider
 fi
