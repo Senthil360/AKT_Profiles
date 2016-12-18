@@ -236,12 +236,6 @@ fi
 if [ -e /sys/block/dm-0/queue/scheduler ]; then
     DM_PATH=/sys/block/dm-0/queue
 fi
-if [ -e /sys/block/sda/queue/scheduler ]; then
-   SDA_PATH=/sys/block/sda/queue;
-fi
-if [ -e /sys/devices/virtual/block/sda/queue/scheduler ]; then
-   SDA_PATH=/sys/devices/virtual/block/sda/queue;
-fi
 string=/sys/devices/virtual/block/dm-0/queue/scheduler;
 Zen_Available=false;
 if  $BB grep 'zen' $string; then
@@ -254,24 +248,43 @@ if [ "$Zen_Available" == "true" ]; then
     echo 12 > $DM_PATH/iosched/fifo_batch
     chmod 644 $DM_PATH/iosched/sync_expire
     echo 300 > $DM_PATH/iosched/sync_expire
-    echo zen > $SDA_PATH/scheduler
-    echo 300 > $SDA_PATH/iosched/sync_expire
-    echo 2100 > $SDA_PATH/iosched/async_expire
-    echo 12 > $SDA_PATH/iosched/fifo_batch
-    chmod 644 $SDA_PATH/iosched/sync_expire
-    echo 300 > $SDA_PATH/iosched/sync_expire
 fi
 if [ "$Zen_Available" = "false" ]; then
     if grep -q 'ro.build.flavor=cm_oneplus3-userdebug' /system/build.prop; then
-        echo ZEN not avalible, setting 'Noop' instead...
-        echo noop > $SDA_PATH/scheduler
-	echo noop > $DM_PATH/scheduler
+        echo ZEN not avalible, setting 'Noop' instead...	
+        echo noop > $DM_PATH/scheduler
     else
-        echo ZEN not avalible, setting 'CFQ' instead...
-        echo cfq > $SDA_PATH
-	echo cfq > $DM_PATH/scheduler
+        echo ZEN not avalible, setting 'CFQ' instead...	
+        echo cfq > $DM_PATH/scheduler
     fi
 fi
+for i in /sys/block/../devices/soc/624000.ufshc/host0/target0:0:0/0:0:0:[0-4]/block/*/queue; do
+  string4=$($BB readlink -f $i/scheduler | cut -d 'q' -f1 | cut -d 'k' -f2 | cut -d '/' -f2 | tr a-z A-Z)
+  string5=$($BB cat $i/scheduler | cut -d ']' -f1 | cut -d '[' -f2 | $BB tr a-z A-Z)
+  if [ "$string5" == "NOOP" ]; then
+      echo "Leaving $string4 block at default $string5"
+      echo ""
+      sleep 0.1
+  fi
+  if [ "$string5" != "NOOP" ]; then
+      echo "Changing $string4 block I/O scheduler"
+      if [ -e $i/scheduler_hard ]; then
+          echo zen > $i/scheduler_hard
+      fi
+      echo zen > $i/scheduler
+      echo ""
+      sleep 0.2
+      # Initialize string 6 to avoid reference conflicts
+      string6=$($BB cat $i/scheduler | cut -d ']' -f1 | cut -d '[' -f2)
+      if [ "$string6" == "zen" ]; then
+         echo 300 > $i/iosched/sync_expire
+         echo 2100 > $i/iosched/async_expire
+         echo 12 > $i/iosched/fifo_batch
+        chmod 644 $/iosched/sync_expire
+        echo 300 > $i/iosched/sync_expire
+    fi
+  fi
+done
 if [ -e "$DM_PATH/iostats" ]; then
 	echo 0 > $DM_PATH/iostats
 fi
