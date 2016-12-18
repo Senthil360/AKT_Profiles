@@ -274,7 +274,7 @@ for i in /sys/block/../devices/soc/624000.ufshc/host0/target0:0:0/0:0:0:[0-4]/bl
       fi
       echo cfq > $i/scheduler
       echo ""
-      sleep 0.2
+      sleep 2
       # Initialize string 6 to avoid reference conflicts
       string6=$($BB cat $i/scheduler | cut -d ']' -f1 | cut -d '[' -f2)
       if [ "$string6" == "cfq" ]; then
