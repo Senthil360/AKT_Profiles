@@ -241,7 +241,7 @@ sleep 0.5
 echo "=========================================="
 echo Tweaking other various Settings
 echo ·I/O Values
-if [ -d /sys/block/dm-0 ] || [-d /sys/devices/virtual/block/dm-0 ]; then
+if [ -d /sys/block/dm-0 ] || [ -d /sys/devices/virtual/block/dm-0 ]; then
 if [ -e /sys/devices/virtual/block/dm-0/queue/scheduler ]; then
     DM_PATH=/sys/devices/virtual/block/dm-0/queue
 fi
