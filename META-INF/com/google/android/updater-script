@@ -12,7 +12,7 @@ ui_print("=          by Asiier & Senthil360          =");
 ui_print("=                                          =");
 ui_print("============================================");
 ui_print("                                            ");
-ui_print(" ~~~~~~ Current verison:  Beta 0.8.7 ~~~~~~ "); 
+ui_print(" ~~~~~~ Current verison:  Beta 0.8.8 ~~~~~~ "); 
 ui_print("                                            ");
 
 run_program("/sbin/busybox", "mount", "/system");
