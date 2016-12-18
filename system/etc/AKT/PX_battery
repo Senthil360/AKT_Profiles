@@ -241,6 +241,7 @@ sleep 0.5
 echo "=========================================="
 echo Tweaking other various Settings
 echo ·I/O Values
+if [ -d /sys/block/dm-0 ] || [-d /sys/devices/virtual/block/dm-0 ]; then
 if [ -e /sys/devices/virtual/block/dm-0/queue/scheduler ]; then
     DM_PATH=/sys/devices/virtual/block/dm-0/queue
 fi
@@ -268,6 +269,7 @@ if [ "$Zen_Available" = "false" ]; then
         echo ZEN not avalible, setting 'CFQ' instead...	
         echo cfq > $DM_PATH/scheduler
     fi
+fi
 fi
 for i in /sys/block/../devices/soc/624000.ufshc/host0/target0:0:0/0:0:0:[0-4]/block/*/queue; do
   string4=$($BB readlink -f $i/scheduler | cut -d 'q' -f1 | cut -d 'k' -f2 | cut -d '/' -f2 | tr a-z A-Z)
@@ -330,9 +332,8 @@ else
 	echo ' *LMK cannot currently be modified on your Kernel* '
 fi
 echo ·TCP Values
-string=$(</proc/sys/net/ipv4/tcp_available_congestion_control);
-if [[ $string == *"westwood"* ]]
-then
+string2=/proc/sys/net/ipv4/tcp_available_congestion_control)
+if grep 'westwood' $string2; then
 echo westwood > /proc/sys/net/ipv4/tcp_congestion_control
 else
 	echo Westwood not avilable, using Cubic
