@@ -243,6 +243,9 @@ if  $BB grep 'zen' $string; then
      Zen_Available=true;
 fi
 if [ "$Zen_Available" == "true" ]; then
+    if [ -e $DM_PATH/scheduler_hard ]; then
+        echo zen > $DM_PATH/scheduler_hard
+    fi
     echo zen > $DM_PATH/scheduler
     sleep 2
     echo 300 > $DM_PATH/iosched/sync_expire
@@ -254,9 +257,15 @@ fi
 if [ "$Zen_Available" = "false" ]; then
     if grep -q 'ro.build.flavor=cm_oneplus3-userdebug' /system/build.prop; then
         echo ZEN not avalible, setting 'Noop' instead...	
+        if [ -e $DM_PATH/scheduler_hard ]; then
+           echo noop > $DM_PATH/scheduler_hard
+        fi
         echo noop > $DM_PATH/scheduler
     else
         echo ZEN not avalible, setting 'CFQ' instead...	
+        if [ -e $DM_PATH/scheduler_hard ]; then
+           echo cfq > $DM_PATH/scheduler_hard
+        fi
         echo cfq > $DM_PATH/scheduler
     fi
 fi
