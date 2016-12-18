@@ -248,14 +248,11 @@ echo Tweaking other various Settings
 echo ·I/O Values
 if [ -e "/sys/devices/virtual/block/sda/queue/scheduler" ]; then
 if [ -e "/sys/devices/virtual/block/dm-0/queue/scheduler" ]; then
-	echo noop > /sys/devices/virtual/block/dm-0/queue/scheduler
+	if [ -e $DM_PATH/scheduler_hard ]; then
+           echo noop > $DM_PATH/scheduler_hard
+        fi
+    echo noop > $DM_PATH/scheduler
 fi
-fi
-if [ -e "/sys/block/dm-0/queue/scheduler" ]; then
-	echo noop > /sys/block/dm-0/queue/scheduler
-fi
-if [ -e "/sys/block/dm-0/queue/scheduler" ]; then
-	echo noop > /sys/block/dm-0/queue/scheduler
 fi
 if [ -e "/sys/block/dm-0/queue/iostats" ]; then
 	echo 0 > /sys/block/dm-0/queue/iostats
