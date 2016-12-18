@@ -10,6 +10,7 @@ echo $divider
 echo -e "\e[01;36m   - All-in-One Project - \e[00;37m"
 echo -e "\e[01;36m - Advanced·Kernel·Tweaks - \e[00;37m"
 echo -e "\e[01;36m          - A·K·T -   \e[00;37m"
+echo -e "\e[01;36m         ~ BETA 0.9 ~   \e[00;37m"
 echo $divider
 echo ""
 sleep 2
@@ -45,7 +46,8 @@ chmod 777 /system/etc/AKT/PZ_battery
 clear
 sh /system/etc/AKT/PZ_battery
 clear
-echo " Installation finished... For additional information and questions, please visit our XDA thread"
+echo " Installation finished... "
+echo " For additional information and questions, please visit our XDA thread"
 sleep 5; main_menu;
 exit;;
 2 ) #Nameless_Battery 
@@ -56,7 +58,8 @@ chmod 777 /system/etc/AKT/NLB_battery
 clear
 sh /system/etc/AKT/NLB_battery
 clear
-echo " Installation finished... For additional information and questions, please visit our XDA thread"
+echo " Installation finished... "
+echo " For additional information and questions, please visit our XDA thread"
 sleep 5; main_menu;
 exit;;
 3 ) #FairPark
@@ -67,7 +70,8 @@ chmod 777 /system/etc/AKT/FairPark
 clear
 sh /system/etc/AKT/FairPark
 clear
-echo " Installation finished... For additional information and questions, please visit our XDA thread"
+echo " Installation finished... "
+echo " For additional information and questions, please visit our XDA thread"
 sleep 5; main_menu;
 exit;;
 4 ) #Project_XANA_Battery
@@ -78,7 +82,8 @@ chmod 777 /system/etc/AKT/PX_battery
 clear
 sh /system/etc/AKT/PX_battery
 clear
-echo " Installation finished... For additional information and questions, please visit our XDA thread"
+echo " Installation finished... "
+echo " For additional information and questions, please visit our XDA thread"
 sleep 5; main_menu;
 exit;;
 5 ) #Project_XANA_Extreme
@@ -88,7 +93,8 @@ chmod 777 /system/etc/init.d/99AKT
 clear
 chmod 777 /system/etc/AKT/PX_battery_extreme
 clear
-echo " Installation finished... For additional information and questions, please visit our XDA thread"
+echo " Installation finished... "
+echo " For additional information and questions, please visit our XDA thread"
 sleep 5; main_menu;
 exit;;
 6 ) echo "Coming soon"
@@ -132,7 +138,8 @@ chmod 777 /system/etc/AKT/BEF
 clear
 sh /system/etc/AKT/BEF
 clear
-echo " Installation finished... For additional information and questions, please visit our XDA thread"
+echo " Installation finished... "
+echo " For additional information and questions, please visit our XDA thread"
 sleep 5; main_menu;
 exit;;
 2 ) mount -o remount,rw /system 2>/dev/null
@@ -142,7 +149,8 @@ chmod 777 /system/etc/AKT/NLB_performance
 clear
 sh /system/etc/AKT/NLB_performance
 clear
-echo " Installation finished... For additional information and questions, please visit our XDA thread"
+echo " Installation finished... "
+echo " For additional information and questions, please visit our XDA thread"
 sleep 5; main_menu;
 exit;;
 3 ) mount -o remount,rw /system 2>/dev/null
@@ -152,7 +160,8 @@ chmod 777 /system/etc/AKT/FusionP
 clear
 sh /system/etc/AKT/FusionP
 clear
-echo " Installation finished... For additional information and questions, please visit our XDA thread"
+echo " Installation finished... "
+echo " For additional information and questions, please visit our XDA thread"
 sleep 5; main_menu;
 exit;;
 4 ) clear
@@ -180,8 +189,9 @@ echo -e "\e[01;91m 1.) GhostPepper by @Asiier \e[00;37m"
 echo -e "\e[01;33m 2.) Fusion Balanced by @Patalao \e[00;37m"
 echo -e "\e[01;93m 3.) Nameless Balanced by @Senthil360 \e[00;37m"
 echo -e "\e[01;92m 4.) Project by Zhana @Asiier \e[00;37m"
-echo -e "\e[01;90m 5.) Additional tweaks... \e[00;37m"
-echo -e "\e[01;94m 6.) Main menu \e[00;37m"
+echo -e "\e[01;92m 5.) Project by Zhana @Asiier \e[00;37m"
+echo -e "\e[01;90m 6.) Additional tweaks... \e[00;37m"
+echo -e "\e[01;94m 7.) Main menu \e[00;37m"
 echo ""
 echo $divider
 echo ""
@@ -197,7 +207,8 @@ chmod 777 /system/etc/AKT/GhostPepper
 clear
 sh /system/etc/AKT/GhostPepper
 clear
-echo " Installation finished... For additional information and questions, please visit our XDA thread"
+echo " Installation finished... "
+echo " For additional information and questions, please visit our XDA thread"
 sleep 5; main_menu;
 exit;;
 2 ) mount -o remount,rw /system 2>/dev/null
@@ -207,7 +218,8 @@ chmod 777 /system/etc/AKT/FusionB
 clear
 sh /system/etc/AKT/FusionB
 clear
-echo " Installation finished... For additional information and questions, please visit our XDA thread"
+echo " Installation finished... "
+echo " For additional information and questions, please visit our XDA thread"
 sleep 5; main_menu;
 exit;;
 3 ) mount -o remount,rw /system 2>/dev/null
@@ -217,7 +229,8 @@ chmod 777 /system/etc/AKT/NLB_balanced
 clear
 sh /system/etc/AKT/NLB_balanced
 clear
-echo " Installation finished... For additional information and questions, please visit our XDA thread"
+echo " Installation finished... "
+echo " For additional information and questions, please visit our XDA thread"
 sleep 5; main_menu;
 exit;;
 4 ) mount -o remount,rw /system 2>/dev/null
@@ -227,14 +240,26 @@ chmod 777 /system/etc/AKT/PZ_balanced
 clear
 sh /system/etc/AKT/PZ_balanced
 clear
-echo " Installation finished... For additional information and questions, please visit our XDA thread"
+echo " Installation finished... "
+echo " For additional information and questions, please visit our XDA thread"
 sleep 5; main_menu;
 exit;;
-5 ) echo "Coming soon"
+5 ) mount -o remount,rw /system 2>/dev/null
+cat /system/etc/AKT/HawkPepper > /system/etc/init.d/99AKT
+chmod 777 /system/etc/init.d/99AKT
+chmod 777 /system/etc/AKT/HawkPepper
+clear
+sh /system/etc/AKT/HawkPepper
+clear
+echo " Installation finished... "
+echo " For additional information and questions, please visit our XDA thread"
+sleep 5; main_menu;
+exit;;
+6 ) echo "Coming soon"
 echo " You tell me what to add here"
 sleep 2; main_menu;
 exit;;
-6 ) clear; main_menu;;
+7 ) clear; main_menu;;
 * ) echo " Please, enter a valid option..."
 sleep 2
 clear;;
@@ -303,7 +328,7 @@ if [ -e /data/system/current_profile ]; then
  echo $divider
  echo ""
  string3=$($BB cat /data/system/current_profile)
- echo -e " Current Profile:  \e[04;94m $string3 \e[00;37m"
+ echo -e " Current Profile:  '\e[04;94m$string3\e[00;37m"'
  echo ""
  echo $divider
 fi

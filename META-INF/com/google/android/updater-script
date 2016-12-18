@@ -12,7 +12,7 @@ ui_print("=          by Asiier & Senthil360          =");
 ui_print("=                                          =");
 ui_print("============================================");
 ui_print("                                            ");
-ui_print(" ~~~~~~ Current verison:  Beta 0.8.9 ~~~~~~ "); 
+ui_print(" ~~~~~~~ Current verison:  Beta 0.9 ~~~~~~~ "); 
 ui_print("                                            ");
 
 run_program("/sbin/busybox", "mount", "/system");
@@ -35,6 +35,7 @@ set_perm(0, 0, 0777, "/system/etc/AKT/NLB_battery");
 set_perm(0, 0, 0777, "/system/etc/AKT/BEF");
 set_perm(0, 0, 0777, "/system/etc/AKT/GhostPepper");
 set_perm(0, 0, 0777, "/system/etc/AKT/FairPark");
+set_perm(0, 0, 0777, "/system/etc/AKT/HawkPepper");
 set_perm(0, 0, 0777, "/system/etc/AKT/Stock");
 set_perm(0, 0, 0777, "/system/etc/AKT/busybox");
 run_program("/sbin/busybox", "unmount", "/system");
