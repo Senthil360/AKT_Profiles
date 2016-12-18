@@ -256,6 +256,7 @@ if  $BB grep 'zen' $string; then
 fi
 if [ "$Zen_Available" == "true" ]; then
     echo zen > $DM_PATH/scheduler
+    sleep 2
     echo 300 > $DM_PATH/iosched/sync_expire
     echo 2100 > $DM_PATH/iosched/async_expire
     echo 12 > $DM_PATH/iosched/fifo_batch
