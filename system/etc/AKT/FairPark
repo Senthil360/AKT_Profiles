@@ -277,14 +277,14 @@ for i in /sys/block/../devices/soc/624000.ufshc/host0/target0:0:0/0:0:0:[0-4]/bl
       fi
       echo zen > $i/scheduler
       echo ""
-      sleep 0.2
+      sleep 2
       # Initialize string 6 to avoid reference conflicts
       string6=$($BB cat $i/scheduler | cut -d ']' -f1 | cut -d '[' -f2)
       if [ "$string6" == "zen" ]; then
          echo 300 > $i/iosched/sync_expire
          echo 3000 > $i/iosched/async_expire
          echo 14 > $i/iosched/fifo_batch
-        chmod 644 $/iosched/sync_expire
+        chmod 644 $i/iosched/sync_expire
         echo 300 > $i/iosched/sync_expire
     fi
   fi
