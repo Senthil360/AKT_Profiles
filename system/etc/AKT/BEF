@@ -242,6 +242,7 @@ if  $BB grep 'cfq' $string; then
 fi
 if [ "$Cfq_Available" == "true" ]; then
     echo cfq > $DM_PATH/scheduler
+    sleep 2
     echo 5 > $DM_PATH/iosched/back_seek_penalty
     echo 0 > $DM_PATH/iosched/group_idle
     echo 0 > $DM_PATH/iosched/slice_idle
