@@ -229,7 +229,8 @@ fi
 sleep 0.5
 echo "=========================================="
 echo Tweaking other various Settings
-echo ·I/O Values
+echo ·I/O Valuesif
+if [ -d /sys/block/dm-0 ] || [-d /sys/devices/virtual/block/dm-0 ]; then
 if [ -e /sys/devices/virtual/block/dm-0/queue/scheduler ]; then
     DM_PATH=/sys/devices/virtual/block/dm-0/queue
 fi
@@ -248,6 +249,7 @@ if [ "$Zen_Available" == "true" ]; then
     echo 14 > $DM_PATH/iosched/fifo_batch
     chmod 644 $DM_PATH/iosched/sync_expire
     echo 300 > $DM_PATH/iosched/sync_expire
+fi
 fi
 if [ "$Zen_Available" = "false" ]; then
     if grep -q 'ro.build.flavor=cm_oneplus3-userdebug' /system/build.prop; then
