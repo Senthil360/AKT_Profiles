@@ -10,7 +10,7 @@
 #TWEAKS_BEGIN
 echo ""
 echo --------------------------------------------------------
-echo Applying 'Project Zhana (Battery variant)' v3.3
+echo Applying 'Project Zhana (Balanced variant)' v3.3
 echo Advanced Kernel Settings
 echo --------------------------------------------------------
 sleep 0.5
