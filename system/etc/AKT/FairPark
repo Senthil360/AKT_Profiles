@@ -229,7 +229,7 @@ fi
 sleep 0.5
 echo "=========================================="
 echo Tweaking other various Settings
-echo ·I/O Valuesif
+echo ·I/O Values
 if [ -d /sys/block/dm-0 ] || [-d /sys/devices/virtual/block/dm-0 ]; then
 if [ -e /sys/devices/virtual/block/dm-0/queue/scheduler ]; then
     DM_PATH=/sys/devices/virtual/block/dm-0/queue
@@ -244,6 +244,9 @@ if  $BB grep 'zen' $string; then
 fi
 if [ "$Zen_Available" == "true" ]; then
     echo zen > $DM_PATH/scheduler
+    if [ -e $DM_PATH/scheduler_hard ]; then
+       echo zen > $DM_PATH/scheduler_hard
+    fi
     sleep 2
     echo 300 > $DM_PATH/iosched/sync_expire
     echo 3000 > $DM_PATH/iosched/async_expire
@@ -255,12 +258,16 @@ fi
 if [ "$Zen_Available" = "false" ]; then
     if grep -q 'ro.build.flavor=cm_oneplus3-userdebug' /system/build.prop; then
         echo ZEN not avalible, setting 'Noop' instead...
-        echo noop > $SDA_PATH/scheduler
+        if [ -e $DM_PATH/scheduler_hard ]; then
+           echo noop > $DM_PATH/scheduler_hard
+        fi
 	echo noop > $DM_PATH/scheduler
     else
         echo ZEN not avalible, setting 'CFQ' instead...
-        	
-echo cfq > $DM_PATH/scheduler
+        	if [ -e $DM_PATH/scheduler_hard ]; then
+                    echo cfq > $DM_PATH/scheduler_hard
+                fi
+                echo cfq > $DM_PATH/scheduler
     fi
 fi
 for i in /sys/block/../devices/soc/624000.ufshc/host0/target0:0:0/0:0:0:[0-4]/block/*/queue; do
