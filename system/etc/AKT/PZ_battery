@@ -9,10 +9,10 @@
 #Notes: Please give credit when using this in your work!
 #TWEAKS_BEGIN
 echo ""
-echo ------------------------------------------------------------
+echo --------------------------------------------------------
 echo Applying 'Project Zhana (Battery variant)' v3.3
-echo Advanced Interactive Governor Settings
-echo ------------------------------------------------------------
+echo Advanced Kernel Settings
+echo --------------------------------------------------------
 sleep 0.5
 echo Author: Asiier
 echo Settings By: Asiier
@@ -57,7 +57,9 @@ if test $maxfreq -eq 1593600; then
     chmod 644 /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
     echo 1593600 > /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq     #Core 0 Maximum Frequency = 1593MHz         
     chmod 444 /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
-    echo 70 480000:65 556800:75 729600:82 960000:86 1036800:99 1228800:100 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/target_loads #Set overclock max frequency compatible target_loads
+    chmod 644 /sys/devices/system/cpu/cpu0/cpufreq/interactive/target_loads
+    echo 70 480000:65 556800:75 729600:82 960000:86 1036800:99 1228800:100 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/target_loads 
+    chmod 444 /sys/devices/system/cpu/cpu0/cpufreq/interactive/target_loads
 elif test $maxfreq -eq 1728000; then
     #Temporarily change permissions to governor files for the Little cluster to set the maximum frequency to 1728MHz
     echo LITTLE Cluster Overclocking detected. 
@@ -65,7 +67,9 @@ elif test $maxfreq -eq 1728000; then
     chmod 644 /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
     echo 1728000 > /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq     #Core 0 Maximum Frequency = 1728MHz         
     chmod 444 /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
-    echo 70 480000:65 556800:75 729600:82 960000:86 1036800:99 1228800:100 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/target_loads #Set normal max frequency target_loads
+    chmod 644 /sys/devices/system/cpu/cpu0/cpufreq/interactive/target_loads
+    echo 70 480000:65 556800:75 729600:82 960000:86 1036800:99 1228800:100 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/target_loads 
+    chmod 444 /sys/devices/system/cpu/cpu0/cpufreq/interactive/target_loads
 else
     echo "===================================================="
     echo Do not underclock!!! Set the clock speed to max and re-run the script.
