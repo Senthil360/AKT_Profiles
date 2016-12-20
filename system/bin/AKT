@@ -92,7 +92,7 @@ cat /system/etc/AKT/PX_battery_extreme > /system/etc/init.d/99AKT
 chmod 777 /system/etc/init.d/99AKT
 chmod 777 /system/etc/AKT/PX_battery_extreme
 clear
-sh /system/ect/AKT/PX_battery_extreme
+sh /system/etc/AKT/PX_battery_extreme
 clear
 echo " Installation finished... "
 echo " For additional information and questions, please visit our XDA thread"
