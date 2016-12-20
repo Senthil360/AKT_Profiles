@@ -81,10 +81,9 @@ else
     echo Do not underclock!!! Set the clock speed to max and re-run the script.
     echo "===================================================="
 fi
-
-echo 200000 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/timer_slack
+echo 220000 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/timer_slack
 echo 307200 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/hispeed_freq
-echo 120000 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/timer_rate
+echo 140000 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/timer_rate
 echo 0 729600:155000 960000:165000 1228800:155000 1478400:100000 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/above_hispeed_delay
 echo 155 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/go_hispeed_load
 echo 22000 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/min_sample_time
@@ -140,11 +139,11 @@ else
 fi
 sleep 0.5
 #Tweak Interactive Governor
-echo 100000 > /sys/devices/system/cpu/cpu2/cpufreq/interactive/timer_slack
+echo 140000 > /sys/devices/system/cpu/cpu2/cpufreq/interactive/timer_slack
 echo 940800 > /sys/devices/system/cpu/cpu2/cpufreq/interactive/hispeed_freq
-echo 65000 > /sys/devices/system/cpu/cpu2/cpufreq/interactive/timer_rate
-echo 32000 940800:155000 1248000:175000 1401600:80000 1632000:80000 > /sys/devices/system/cpu/cpu2/cpufreq/interactive/above_hispeed_delay
-echo 99 > /sys/devices/system/cpu/cpu2/cpufreq/interactive/go_hispeed_load
+echo 85000 > /sys/devices/system/cpu/cpu2/cpufreq/interactive/timer_rate
+echo 32000 940800:205000 1248000:175000 1401600:80000 1632000:80000 > /sys/devices/system/cpu/cpu2/cpufreq/interactive/above_hispeed_delay
+echo 400 > /sys/devices/system/cpu/cpu2/cpufreq/interactive/go_hispeed_load
 echo 11000 > /sys/devices/system/cpu/cpu2/cpufreq/interactive/min_sample_time
 echo 0 > /sys/devices/system/cpu/cpu2/cpufreq/interactive/max_freq_hysteresis
 echo 1 > /sys/devices/system/cpu/cpu2/cpufreq/interactive/ignore_hispeed_on_notif
@@ -237,6 +236,7 @@ echo 950000 > /proc/sys/kernel/sched_rt_runtime_us
 echo 1000000 > /proc/sys/kernel/sched_rt_period_us
 if [ -e "/proc/sys/kernel/sched_migration_fixup" ]; then
 	echo 1 > /proc/sys/kernel/sched_migration_fixup
+fi
 if [ -e "/proc/sys/kernel/sched_freq_dec_notify" ]; then
 	echo 410000 > /proc/sys/kernel/sched_freq_dec_notify
 fi
