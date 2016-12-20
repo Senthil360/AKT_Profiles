@@ -132,7 +132,8 @@ echo -n "Please select a profile:"
 read option
 echo ""
 case $option in
-1 ) mount -o remount,rw /system 2>/dev/null
+1 ) #Burnout PR2 
+mount -o remount,rw /system 2>/dev/null
 cat /system/etc/AKT/BEF > /system/etc/init.d/99AKT
 chmod 777 /system/etc/init.d/99AKT
 chmod 777 /system/etc/AKT/BEF
@@ -143,7 +144,8 @@ echo " Installation finished... "
 echo " For additional information and questions, please visit our XDA thread"
 sleep 5; main_menu;
 exit;;
-2 ) mount -o remount,rw /system 2>/dev/null
+2 )  #Nameless Battery
+mount -o remount,rw /system 2>/dev/null
 cat /system/etc/AKT/NLB_performance > /system/etc/init.d/99AKT
 chmod 777 /system/etc/init.d/99AKT
 chmod 777 /system/etc/AKT/NLB_performance
@@ -154,7 +156,8 @@ echo " Installation finished... "
 echo " For additional information and questions, please visit our XDA thread"
 sleep 5; main_menu;
 exit;;
-3 ) mount -o remount,rw /system 2>/dev/null
+3 ) #Fusion Perfomance
+mount -o remount,rw /system 2>/dev/null
 cat /system/etc/AKT/FusionP > /system/etc/init.d/99AKT
 chmod 777 /system/etc/init.d/99AKT
 chmod 777 /system/etc/AKT/FusionP
@@ -212,7 +215,8 @@ echo " Installation finished... "
 echo " For additional information and questions, please visit our XDA thread"
 sleep 5; main_menu;
 exit;;
-2 ) mount -o remount,rw /system 2>/dev/null
+2 ) #Fusion Balanced
+mount -o remount,rw /system 2>/dev/null
 cat /system/etc/AKT/FusionB > /system/etc/init.d/99AKT
 chmod 777 /system/etc/init.d/99AKT
 chmod 777 /system/etc/AKT/FusionB
@@ -223,7 +227,8 @@ echo " Installation finished... "
 echo " For additional information and questions, please visit our XDA thread"
 sleep 5; main_menu;
 exit;;
-3 ) mount -o remount,rw /system 2>/dev/null
+3 ) #Nameless Balanced 
+mount -o remount,rw /system 2>/dev/null
 cat /system/etc/AKT/NLB_balanced > /system/etc/init.d/99AKT
 chmod 777 /system/etc/init.d/99AKT
 chmod 777 /system/etc/AKT/NLB_balanced
@@ -234,23 +239,25 @@ echo " Installation finished... "
 echo " For additional information and questions, please visit our XDA thread"
 sleep 5; main_menu;
 exit;;
-4 ) mount -o remount,rw /system 2>/dev/null
-cat /system/etc/AKT/PZ_balanced > /system/etc/init.d/99AKT
-chmod 777 /system/etc/init.d/99AKT
-chmod 777 /system/etc/AKT/PZ_balanced
-clear
-sh /system/etc/AKT/PZ_balanced
-clear
-echo " Installation finished... "
-echo " For additional information and questions, please visit our XDA thread"
-sleep 5; main_menu;
-exit;;
-5 ) mount -o remount,rw /system 2>/dev/null
+4 ) #HawkPepper 
+mount -o remount,rw /system 2>/dev/null
 cat /system/etc/AKT/HawkPepper > /system/etc/init.d/99AKT
 chmod 777 /system/etc/init.d/99AKT
 chmod 777 /system/etc/AKT/HawkPepper
 clear
 sh /system/etc/AKT/HawkPepper
+clear
+echo " Installation finished... "
+echo " For additional information and questions, please visit our XDA thread"
+sleep 5; main_menu;
+exit;;
+5 ) #Project Zhana Balanced
+mount -o remount,rw /system 2>/dev/null
+cat /system/etc/AKT/PZ_balanced > /system/etc/init.d/99AKT
+chmod 777 /system/etc/init.d/99AKT
+chmod 777 /system/etc/AKT/PZ_balanced
+clear
+sh /system/etc/AKT/PZ_balanced
 clear
 echo " Installation finished... "
 echo " For additional information and questions, please visit our XDA thread"
