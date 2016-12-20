@@ -3,9 +3,9 @@
 #Settings By: Asiier
 #Device: One Plus 3
 #Codename: Project X.A.N.A (BE)
-#Build Status: Stable
-#Version: 3.3
-#Last Updated: 09/12/2016
+#Build Status: BETA
+#Version: 3.5
+#Last Updated: 20/12/2016
 #Notes: Please give credit when using this in your work!
 #TWEAKS_BEGIN
 echo ""
@@ -16,7 +16,7 @@ echo If you want use it, DO NOT COMPLAIN about lag
 echo '*************************'
 sleep 5
 echo ------------------------------------------------------------
-echo Applying 'Project X.A.N.A (Extreme Battery variant)' v3.3
+echo Applying 'Project X.A.N.A (Extreme Battery variant)' v3.5
 echo Advanced Kernel Settings
 echo ------------------------------------------------------------
 sleep 0.5
@@ -24,8 +24,8 @@ echo Author: Asiier
 echo Settings By: Asiier
 echo Device: One Plus 3
 echo Codename: 'Project X.A.N.A (BE)'
-echo Build Status: Stable
-echo Last Updated: 09/12/2016
+echo Build Status: BETA
+echo Last Updated: 20/12/2016
 echo For more information go to the XDA theard
 echo ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 sleep 0.3
@@ -64,7 +64,7 @@ if test $maxfreq -eq 1593600; then
     echo 1593600 > /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq     #Core 0 Maximum Frequency = 1593MHz         
     chmod 444 /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
     chmod 644 /sys/devices/system/cpu/cpu0/cpufreq/interactive/target_loads
-    echo 71 480000:65 556800:75 729600:81 960000:87 1036800:99 1228800:100 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/target_loads 
+    echo 71 480000:70 556800:77 729600:81 960000:87 1036800:99 1228800:100 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/target_loads 
     chmod 444 /sys/devices/system/cpu/cpu0/cpufreq/interactive/target_loads
 elif test $maxfreq -eq 1728000; then
     #Temporarily change permissions to governor files for the Little cluster to set the maximum frequency to 1728MHz
@@ -74,7 +74,7 @@ elif test $maxfreq -eq 1728000; then
     echo 1728000 > /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq     #Core 0 Maximum Frequency = 1728MHz         
     chmod 444 /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
     chmod 644 /sys/devices/system/cpu/cpu0/cpufreq/interactive/target_loads
-    echo 71 480000:65 556800:75 729600:81 960000:87 1036800:99 1228800:100 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/target_loads 
+    echo 71 480000:70 556800:77 729600:81 960000:87 1036800:99 1228800:100 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/target_loads 
     chmod 444 /sys/devices/system/cpu/cpu0/cpufreq/interactive/target_loads
 else
     echo "===================================================="
@@ -208,7 +208,7 @@ echo N > /sys/module/msm_thermal/parameters/enabled
 sleep 0.3
 echo Tweaking HMP Scheduler for correcting BIG Cluster utilization
 echo 2 > /proc/sys/kernel/sched_window_stats_policy
-echo 95 > /proc/sys/kernel/sched_upmigrate
+echo 90 > /proc/sys/kernel/sched_upmigrate
 echo 80 > /proc/sys/kernel/sched_downmigrate
 echo 5 > /proc/sys/kernel/sched_spill_nr_run
 echo 96 > /proc/sys/kernel/sched_spill_load
@@ -219,7 +219,7 @@ fi
 if [ -e "/proc/sys/kernel/sched_enable_power_aware" ]; then
     echo 1 > /proc/sys/kernel/sched_enable_power_aware
 fi
-echo 5 > /proc/sys/kernel/sched_upmigrate_min_nice
+echo 10 > /proc/sys/kernel/sched_upmigrate_min_nice
 echo 4 > /proc/sys/kernel/sched_ravg_hist_size
 if [ -e "/proc/sys/kernel/sched_small_wakee_task_load" ]; then
 	echo 5 > /proc/sys/kernel/sched_small_wakee_task_load
@@ -235,7 +235,8 @@ if [ -e "/proc/sys/kernel/sched_big_waker_task_load" ]; then
 fi
 echo 950000 > /proc/sys/kernel/sched_rt_runtime_us
 echo 1000000 > /proc/sys/kernel/sched_rt_period_us
-#echo 1 > /proc/sys/kernel/sched_migration_fixup
+if [ -e "/proc/sys/kernel/sched_migration_fixup" ]; then
+	echo 1 > /proc/sys/kernel/sched_migration_fixup
 if [ -e "/proc/sys/kernel/sched_freq_dec_notify" ]; then
 	echo 410000 > /proc/sys/kernel/sched_freq_dec_notify
 fi
@@ -339,7 +340,7 @@ if grep -q 'ro.build.version.sdk=23' /system/build.prop; then
 fi
 sleep 1
 echo ------------------------------------------------------------
-echo 'Project X.A.N.A v3.3' Successfully Applied!
+echo 'Project X.A.N.A v3.5' Successfully Applied!
 echo "Project X.A.N.A Battery Extreme" > /data/system/current_profile
 echo   You may now tweak them further
 echo    using EXKM or Kernel Adiutor
