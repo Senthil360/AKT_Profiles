@@ -305,10 +305,10 @@ if [ -e "$DM_PATH/rq_affinity" ]; then
 	echo 1 > $DM_PATH/rq_affinity
 fi
 if [ -e "/sys/block/dm-0/bdi/read_ahead_kb" ]; then
-	echo 512 > /sys/devices/virtual/block/dm-0/bdi/read_ahead_kb
+	echo 3072 > /sys/devices/virtual/block/dm-0/bdi/read_ahead_kb
 fi
 if [ -e "/sys/block/sda/bdi/read_ahead_kb" ]; then
-	echo 512 > /sys/block/sda/bdi/read_ahead_kb
+	echo 3072 > /sys/block/sda/bdi/read_ahead_kb
 fi
 if [ -e "/sys/module/lowmemorykiller/parameters/enable_adaptive_lmk" ]; then
 chmod 666 /sys/module/lowmemorykiller/parameters/enable_adaptive_lmk
