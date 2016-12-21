@@ -81,6 +81,7 @@ else
     echo Do not underclock!!! Set the clock speed to max and re-run the script.
     echo "===================================================="
 fi
+chmod 644 /sys/devices/system/cpu/cpu0/cpufreq/interactive/*
 echo 220000 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/timer_slack
 echo 307200 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/hispeed_freq
 echo 140000 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/timer_rate
@@ -139,6 +140,7 @@ else
 fi
 sleep 0.5
 #Tweak Interactive Governor
+chmod 644 /sys/devices/system/cpu/cpu2/cpufreq/interactive/*
 echo 140000 > /sys/devices/system/cpu/cpu2/cpufreq/interactive/timer_slack
 echo 940800 > /sys/devices/system/cpu/cpu2/cpufreq/interactive/hispeed_freq
 echo 85000 > /sys/devices/system/cpu/cpu2/cpufreq/interactive/timer_rate
@@ -251,31 +253,84 @@ sleep 0.5
 echo "=========================================="
 echo Tweaking other various Settings
 echo ·I/O Values
-if [ -e "/sys/devices/virtual/block/sda/queue/scheduler" ]; then
-if [ -e "/sys/devices/virtual/block/dm-0/queue/scheduler" ]; then
-	if [ -e $DM_PATH/scheduler_hard ]; then
+if [ -d /sys/block/dm-0 ] || [ -d /sys/devices/virtual/block/dm-0 ]; then
+if [ -e /sys/devices/virtual/block/dm-0/queue/scheduler ]; then
+    DM_PATH=/sys/devices/virtual/block/dm-0/queue
+fi
+if [ -e /sys/block/dm-0/queue/scheduler ]; then
+    DM_PATH=/sys/block/dm-0/queue
+fi
+string=/sys/devices/virtual/block/dm-0/queue/scheduler;
+Zen_Available=false;
+if  $BB grep 'zen' $string; then
+     Zen_Available=true;
+fi
+if [ "$Zen_Available" == "true" ]; then
+    if [ -e $DM_PATH/scheduler_hard ]; then
+        echo zen > $DM_PATH/scheduler_hard
+    fi
+    echo zen > $DM_PATH/scheduler
+    sleep 2
+    echo 300 > $DM_PATH/iosched/sync_expire
+    echo 2100 > $DM_PATH/iosched/async_expire
+    echo 12 > $DM_PATH/iosched/fifo_batch
+    chmod 644 $DM_PATH/iosched/sync_expire
+    echo 300 > $DM_PATH/iosched/sync_expire
+fi
+if [ "$Zen_Available" = "false" ]; then
+    if grep -q 'ro.build.flavor=cm_oneplus3-userdebug' /system/build.prop; then
+        echo ZEN not avalible, setting 'Noop' instead...	
+        if [ -e $DM_PATH/scheduler_hard ]; then
            echo noop > $DM_PATH/scheduler_hard
         fi
-    echo noop > $DM_PATH/scheduler
+    echo zen > $DM_PATH/scheduler
+    else
+        echo ZEN not avalible, setting 'CFQ' instead...	
+        if [ -e $DM_PATH/scheduler_hard ]; then
+           echo cfq > $DM_PATH/scheduler_hard
+        fi
+        echo cfq > $DM_PATH/scheduler
+    fi
 fi
 fi
-if [ -e "/sys/block/dm-0/queue/iostats" ]; then
-	echo 0 > /sys/block/dm-0/queue/iostats
+for i in /sys/block/../devices/soc/624000.ufshc/host0/target0:0:0/0:0:0:[0-4]/block/*/queue; do
+  string4=$($BB readlink -f $i/scheduler | cut -d 'q' -f1 | cut -d 'k' -f2 | cut -d '/' -f2 | tr a-z A-Z)
+  string5=$($BB cat $i/scheduler | cut -d ']' -f1 | cut -d '[' -f2 | $BB tr a-z A-Z)
+  if [ "$string5" == "NOOP" ]; then
+      echo "Leaving $string4 block at default $string5"
+      echo ""
+      sleep 0.1
+  fi
+  if [ "$string5" != "NOOP" ]; then
+      echo "Changing $string4 block I/O scheduler"
+      if [ -e $i/scheduler_hard ]; then
+          echo zen > $i/scheduler_hard
+      fi
+      echo zen > $i/scheduler
+      echo ""
+      sleep 2
+      # Initialize string 6 to avoid reference conflicts
+      string6=$($BB cat $i/scheduler | cut -d ']' -f1 | cut -d '[' -f2)
+      if [ "$string6" == "zen" ]; then
+         echo 300 > $i/iosched/sync_expire
+         echo 2100 > $i/iosched/async_expire
+         echo 12 > $i/iosched/fifo_batch
+        chmod 644 $i/iosched/sync_expire
+        echo 300 > $i/iosched/sync_expire
+    fi
+  fi
+done
+if [ -e "$DM_PATH/iostats" ]; then
+	echo 0 > $DM_PATH/iostats
 fi
-if [ -e "/sys/block/dm-0/queue/rq_affinity" ]; then
-	echo 1 > /sys/block/dm-0/queue/rq_affinity
-fi
-if [ -e "/sys/block/dm-0/queue/rq_affinity" ]; then
-	echo 1 > /sys/devices/virtual/block/dm-0/queue/rq_affinity
+if [ -e "$DM_PATH/rq_affinity" ]; then
+	echo 1 > $DM_PATH/rq_affinity
 fi
 if [ -e "/sys/block/dm-0/bdi/read_ahead_kb" ]; then
 	echo 1024 > /sys/devices/virtual/block/dm-0/bdi/read_ahead_kb
 fi
 if [ -e "/sys/block/sda/bdi/read_ahead_kb" ]; then
 	echo 1024 > /sys/block/sda/bdi/read_ahead_kb
-fi
-if [ -e "/sys/block/dm-0/bdi/read_ahead_kb" ]; then
-	echo 1024 > /sys/block/dm-0/bdi/read_ahead_kb
 fi
 echo ·Memory Values
 echo 20 > /proc/sys/vm/swappiness
