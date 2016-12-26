@@ -52,7 +52,7 @@ if test $maxfreq -eq 1593600; then
     echo 1593600 > /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq     #Core 0 Maximum Frequency = 1593MHz         
     chmod 444 /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
     chmod 644 /sys/devices/system/cpu/cpu0/cpufreq/interactive/target_loads
-    echo 60 1036800:65 1100000:70 1228800:75 1324800:85 1400000:95 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/target_loads 
+    echo 60 729600:70 1228800:85 1593600:95 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/target_loads 
     chmod 444 /sys/devices/system/cpu/cpu0/cpufreq/interactive/target_loads
     #Set normal max frequency target_loads
 elif test $maxfreq -eq 1728000; then
@@ -63,7 +63,7 @@ elif test $maxfreq -eq 1728000; then
     echo 1728000 > /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq     #Core 0 Maximum Frequency = 1728MHz         
     chmod 444 /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
     chmod 644 /sys/devices/system/cpu/cpu0/cpufreq/interactive/target_loads
-    echo 60 1036800:65 1100000:70 1228800:75 1324800:85 1400000:95 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/target_loads 
+    echo 60 729600:70 1228800:85 1593600:95 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/target_loads 
     chmod 444 /sys/devices/system/cpu/cpu0/cpufreq/interactive/target_loads
     #Set normal max frequency target_loads
 else
@@ -72,19 +72,19 @@ else
     echo "===================================================="
 fi
 chmod 644 /sys/devices/system/cpu/cpu0/cpufreq/interactive/*
-echo -1 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/timer_slack
-echo 729600 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/hispeed_freq
+echo 20000 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/timer_slack
+echo 1036800 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/hispeed_freq
 echo 20000 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/timer_rate
-echo 10000 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/above_hispeed_delay
+echo 20000 1228800:50000 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/above_hispeed_delay
 echo 100 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/go_hispeed_load
 echo 0 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/min_sample_time
 echo 0 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/max_freq_hysteresis
-echo 0 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/ignore_hispeed_on_notif
+echo 1 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/ignore_hispeed_on_notif
 echo 0 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/boost
 echo 0 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/fast_ramp_down
 echo 0 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/align_windows
 echo 1 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/use_migration_notif
-echo 1 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/use_sched_load
+echo 0 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/use_sched_load
 echo 0 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/boostpulse_duration
 echo 0 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/io_is_busy
 if [ -e "/sys/devices/system/cpu/cpu0/cpufreq/interactive/enable_prediction" ]; then
@@ -109,7 +109,7 @@ if test $maxfreq -eq 2150400; then
     echo 2150400 > /sys/devices/system/cpu/cpu2/cpufreq/scaling_max_freq     #Core 2 Maximum Frequency = 2150MHz         
     chmod 444 /sys/devices/system/cpu/cpu2/cpufreq/scaling_max_freq
     chmod 644 /sys/devices/system/cpu/cpu2/cpufreq/interactive/target_loads
-    echo 70 1036800:75 1100000:80 1248000:85 1324800:90 1400000:95 1555200:97 1632000:99 > /sys/devices/system/cpu/cpu2/cpufreq/interactive/target_loads 
+    echo 60 729600:70 1248000:75 1700000:95 1900000:99 > /sys/devices/system/cpu/cpu2/cpufreq/interactive/target_loads 
 chmod 444 /sys/devices/system/cpu/cpu2/cpufreq/interactive/target_loads
 #Set overclock max frequency compatible target_loads
 elif test $maxfreq -eq 2265600; then
@@ -120,7 +120,7 @@ elif test $maxfreq -eq 2265600; then
     echo 2265600 > /sys/devices/system/cpu/cpu2/cpufreq/scaling_max_freq     #Core 2 Maximum Frequency = 2265MHz         
     chmod 444 /sys/devices/system/cpu/cpu2/cpufreq/scaling_max_freq
     chmod 644 /sys/devices/system/cpu/cpu2/cpufreq/interactive/target_loads
-    echo 70 1036800:75 1100000:80 1248000:85 1324800:90 1400000:95 1555200:97 1632000:99 > /sys/devices/system/cpu/cpu2/cpufreq/interactive/target_loads 
+    echo 60 729600:70 1248000:75 1700000:95 1900000:99 > /sys/devices/system/cpu/cpu2/cpufreq/interactive/target_loads 
     chmod 444 /sys/devices/system/cpu/cpu2/cpufreq/interactive/target_loads
 else
     echo "===================================================="
@@ -131,11 +131,11 @@ fi
 sleep 0.5
 chmod 644 /sys/devices/system/cpu/cpu2/cpufreq/interactive/*
 #Tweak Interactive Governor
-echo -1 > /sys/devices/system/cpu/cpu2/cpufreq/interactive/timer_slack
-echo 729600 > /sys/devices/system/cpu/cpu2/cpufreq/interactive/hispeed_freq
+echo 20000 > /sys/devices/system/cpu/cpu2/cpufreq/interactive/timer_slack
+echo 1036800 > /sys/devices/system/cpu/cpu2/cpufreq/interactive/hispeed_freq
 echo 20000 > /sys/devices/system/cpu/cpu2/cpufreq/interactive/timer_rate
-echo 40000 1036800:80000 1324800:40000 1632000:80000 > /sys/devices/system/cpu/cpu2/cpufreq/interactive/above_hispeed_delay
-echo 150 > /sys/devices/system/cpu/cpu2/cpufreq/interactive/go_hispeed_load
+echo 20000 1700000:50000 1900000:100000 > /sys/devices/system/cpu/cpu2/cpufreq/interactive/above_hispeed_delay
+echo 100 > /sys/devices/system/cpu/cpu2/cpufreq/interactive/go_hispeed_load
 echo 0 > /sys/devices/system/cpu/cpu2/cpufreq/interactive/min_sample_time
 echo 0 > /sys/devices/system/cpu/cpu2/cpufreq/interactive/max_freq_hysteresis
 echo 1 > /sys/devices/system/cpu/cpu2/cpufreq/interactive/ignore_hispeed_on_notif
@@ -201,18 +201,18 @@ echo N > /sys/module/msm_thermal/parameters/enabled
 sleep 0.3
 echo Tweaking HMP Scheduler for correcting BIG Cluster utilization
 echo 2 > /proc/sys/kernel/sched_window_stats_policy
-echo 90 > /proc/sys/kernel/sched_upmigrate
-echo 75 > /proc/sys/kernel/sched_downmigrate
-echo 20 > /proc/sys/kernel/sched_spill_nr_run
+echo 80 > /proc/sys/kernel/sched_upmigrate
+echo 60 > /proc/sys/kernel/sched_downmigrate
+echo 6 > /proc/sys/kernel/sched_spill_nr_run
 echo 100 > /proc/sys/kernel/sched_spill_load
-echo 100 > /proc/sys/kernel/sched_init_task_load
+echo 30 > /proc/sys/kernel/sched_init_task_load
 if [ -e "/proc/sys/kernel/sched_heavy_task" ]; then
     echo 65 > /proc/sys/kernel/sched_heavy_task
 fi
 if [ -e "/proc/sys/kernel/sched_enable_power_aware" ]; then
     echo 1 > /proc/sys/kernel/sched_enable_power_aware
 fi
-echo 5 > /proc/sys/kernel/sched_upmigrate_min_nice
+echo 10 > /proc/sys/kernel/sched_upmigrate_min_nice
 echo 4 > /proc/sys/kernel/sched_ravg_hist_size
 if [ -e "/proc/sys/kernel/sched_small_wakee_task_load" ]; then
 	echo 5 > /proc/sys/kernel/sched_small_wakee_task_load
@@ -233,10 +233,10 @@ if [ -e "/proc/sys/kernel/sched_freq_dec_notify" ]; then
 	echo 410000 > /proc/sys/kernel/sched_freq_dec_notify
 fi
 if [ -e "/proc/sys/kernel/sched_freq_inc_notify" ]; then
-	echo 600000 > /proc/sys/kernel/sched_freq_inc_notify
+	echo 410000 > /proc/sys/kernel/sched_freq_inc_notify
 fi
 if [ -e "/proc/sys/kernel/sched_boost" ]; then
-	echo 0 > /proc/sys/kernel/sched_boost
+	echo 1 > /proc/sys/kernel/sched_boost
 fi
 #Tweaks for other various Settings
 sleep 0.5
@@ -323,10 +323,10 @@ if [ -e "/sys/block/sda/bdi/read_ahead_kb" ]; then
 	echo 512 > /sys/block/sda/bdi/read_ahead_kb
 fi
 echo ·Memory Values
-echo 00 > /proc/sys/vm/swappiness
+echo 0 > /proc/sys/vm/swappiness
 echo 100 > /proc/sys/vm/vfs_cache_pressure
 echo 80 > /proc/sys/vm/dirty_ratio
-echo 50 > /proc/sys/vm/dirty_background_ratio
+echo 20 > /proc/sys/vm/dirty_background_ratio
 echo 4096 > /proc/sys/vm/min_free_kbytes
 if [ -e "/sys/module/lowmemorykiller/parameters/enable_adaptive_lmk" ]; then
 chmod 666 /sys/module/lowmemorykiller/parameters/enable_adaptive_lmk
