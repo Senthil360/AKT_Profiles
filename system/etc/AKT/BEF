@@ -6,7 +6,8 @@
 #TWEAKS_BEGIN
 echo ""
 echo --------------------------------------------
-echo Applying 'Burnout PR2 Rebooted'
+echo Applying 'Burnout PR2 Golden'
+echo Transforming your phone into a Dodge Challenger Hellcat. Enjoy some donuts and the smell of burnt tires :D
 echo Advanced Kernel Settings
 echo --------------------------------------------
 sleep 0.5
@@ -64,12 +65,12 @@ fi
 chmod 644 /sys/devices/system/cpu/cpu0/cpufreq/interactive/*
 echo 80000 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/timer_slack
 chmod 644 /sys/devices/system/cpu/cpu0/cpufreq/interactive/target_loads
-echo 50 844800:67 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/target_loads
+echo 50 844800:69 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/target_loads
 chmod 444 /sys/devices/system/cpu/cpu0/cpufreq/interactive/target_loads
 echo 20000 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/timer_rate
 echo 0 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/above_hispeed_delay
 echo 70 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/go_hispeed_load
-echo 19000 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/min_sample_time
+echo 40000 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/min_sample_time
 echo 79000 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/max_freq_hysteresis
 echo 1 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/ignore_hispeed_on_notif
 echo 0 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/boost
@@ -125,12 +126,12 @@ sleep 0.5
 chmod 644 /sys/devices/system/cpu/cpu2/cpufreq/interactive/*
 echo 80000 > /sys/devices/system/cpu/cpu2/cpufreq/interactive/timer_slack
 chmod 644 /sys/devices/system/cpu/cpu2/cpufreq/interactive/target_loads
-echo 50 > /sys/devices/system/cpu/cpu2/cpufreq/interactive/target_loads
+echo 45 1555200:75 > /sys/devices/system/cpu/cpu2/cpufreq/interactive/target_loads
 chmod 444 /sys/devices/system/cpu/cpu2/cpufreq/interactive/target_loads
 echo 20000 > /sys/devices/system/cpu/cpu2/cpufreq/interactive/timer_rate
 echo 0 > /sys/devices/system/cpu/cpu2/cpufreq/interactive/above_hispeed_delay
-echo 70 > /sys/devices/system/cpu/cpu2/cpufreq/interactive/go_hispeed_load
-echo 19000 > /sys/devices/system/cpu/cpu2/cpufreq/interactive/min_sample_time
+echo 85 > /sys/devices/system/cpu/cpu2/cpufreq/interactive/go_hispeed_load
+echo 60000 > /sys/devices/system/cpu/cpu2/cpufreq/interactive/min_sample_time
 echo 79000 > /sys/devices/system/cpu/cpu2/cpufreq/interactive/max_freq_hysteresis
 echo 1 > /sys/devices/system/cpu/cpu2/cpufreq/interactive/ignore_hispeed_on_notif
 echo 0 > /sys/devices/system/cpu/cpu2/cpufreq/interactive/boost
@@ -186,18 +187,18 @@ echo N > /sys/module/msm_thermal/parameters/enabled
 sleep 0.3
 echo Tweaking HMP Scheduler for correcting BIG Cluster utilization
 echo 2 > /proc/sys/kernel/sched_window_stats_policy
-echo 35 > /proc/sys/kernel/sched_downmigrate
+echo 60 > /proc/sys/kernel/sched_downmigrate
 echo 85 > /proc/sys/kernel/sched_upmigrate
 echo 2 > /proc/sys/kernel/sched_spill_nr_run
-echo 100 > /proc/sys/kernel/sched_spill_load
-echo 10 > /proc/sys/kernel/sched_upmigrate_min_nice
+echo 90 > /proc/sys/kernel/sched_spill_load
+echo 15 > /proc/sys/kernel/sched_upmigrate_min_nice
 echo 950000 > /proc/sys/kernel/sched_rt_runtime_us
 echo 1000000 > /proc/sys/kernel/sched_rt_period_us
 echo 4 > /proc/sys/kernel/sched_ravg_hist_size
 echo 1 > /proc/sys/kernel/sched_new_task_windows
 echo 50 > /proc/sys/kernel/sched_init_task_load
 if [ -e "/proc/sys/kernel/sched_heavy_task" ]; then
-    echo 50 > /proc/sys/kernel/sched_heavy_task
+    echo 60 > /proc/sys/kernel/sched_heavy_task
 fi
 if [ -e "/proc/sys/kernel/sched_enable_power_aware" ]; then
     echo 1 > /proc/sys/kernel/sched_enable_power_aware
@@ -224,6 +225,38 @@ fi
 if [ -e "/proc/sys/kernel/sched_boost" ]; then
 	echo 1 > /proc/sys/kernel/sched_boost
 fi
+echo Checking Android version...
+if grep -q 'ro.build.version.sdk=25' /system/build.prop; then
+	echo Android Nougat 7.1.X detected!
+	sleep 0.3
+	echo N detected... Applying minor adjustments
+	echo 40000 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/timer_rate
+	echo 40000 > /sys/devices/system/cpu/cpu2/cpufreq/interactive/timer_rate
+	echo 60 844800:74 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/target_loads
+	echo 60 1324800:70 > /sys/devices/system/cpu/cpu2/cpufreq/interactive/target_loads
+	echo 4 > /proc/sys/kernel/sched_spill_nr_run
+	echo 97 > /proc/sys/kernel/sched_spill_load
+	echo 12 > /proc/sys/kernel/sched_upmigrate_min_nice
+	echo 100 > /proc/sys/kernel/sched_init_task_load
+fi
+if grep -q 'ro.build.version.sdk=24' /system/build.prop; then
+	echo Android Nougat 7.0.X detected!
+	sleep 0.3
+	echo N detected... Applying minor adjustments
+	echo 40000 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/timer_rate
+	echo 40000 > /sys/devices/system/cpu/cpu2/cpufreq/interactive/timer_rate
+	echo 60 844800:74 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/target_loads
+	echo 60 1324800:70 > /sys/devices/system/cpu/cpu2/cpufreq/interactive/target_loads
+	echo 4 > /proc/sys/kernel/sched_spill_nr_run
+	echo 97 > /proc/sys/kernel/sched_spill_load
+	echo 12 > /proc/sys/kernel/sched_upmigrate_min_nice
+	echo 100 > /proc/sys/kernel/sched_init_task_load
+fi
+if grep -q 'ro.build.version.sdk=23' /system/build.prop; then
+	echo Android Marshmallow 6.0.1 detected!
+	sleep 0.3
+	echo MM detected... Proper settings have been applied
+fi
 #Tweaks for other various Settings
 sleep 0.5
 echo "=========================================="
@@ -247,12 +280,12 @@ if [ "$Cfq_Available" == "true" ]; then
     fi
     echo cfq > $DM_PATH/scheduler
     sleep 2
-    echo 5 > $DM_PATH/iosched/back_seek_penalty
+    echo 2 > $DM_PATH/iosched/back_seek_penalty
     echo 0 > $DM_PATH/iosched/group_idle
     echo 0 > $DM_PATH/iosched/slice_idle
     echo 1 > $DM_PATH/iosched/low_latency
-    echo 16 > $DM_PATH/iosched/quantum
-    echo 700 > $DM_PATH/iosched/target_latency
+    echo 8 > $DM_PATH/iosched/quantum
+    echo 200 > $DM_PATH/iosched/target_latency
 fi
 if [ "$Cfq_Available" = "false" ]; then
     if grep -q 'ro.build.flavor=cm_oneplus3-userdebug' /system/build.prop; then
@@ -289,12 +322,12 @@ for i in /sys/block/../devices/soc/624000.ufshc/host0/target0:0:0/0:0:0:[0-4]/bl
       # Initialize string 6 to avoid reference conflicts
       string6=$($BB cat $i/scheduler | cut -d ']' -f1 | cut -d '[' -f2)
       if [ "$string6" == "cfq" ]; then
-         echo 5 > $i/iosched/back_seek_penalty
+         echo 2 > $i/iosched/back_seek_penalty
          echo 0 > $i/iosched/group_idle
          echo 0 > $i/iosched/slice_idle
          echo 1 > $i/iosched/low_latency
-         echo 16 > $i/iosched/quantum
-         echo 700 > $i/iosched/target_latency
+         echo 8 > $i/iosched/quantum
+         echo 200 > $i/iosched/target_latency
     fi
   fi
 done
@@ -330,7 +363,7 @@ else
 fi
 #Tweaking GPU
 sleep 0.4
-echo GPU Underclocking
+echo GPU Tweaking
 echo msm-adreno-tz > /sys/devices/soc/b00000.qcom,kgsl-3d0/devfreq/b00000.qcom,kgsl-3d0/governor
 if grep -q 'ro.build.version.sdk=25' /system/build.prop; then
 	if grep -q 'ro.build.flavor=cm_oneplus3-userdebug' /system/build.prop; then
@@ -361,8 +394,8 @@ if grep -q 'ro.build.version.sdk=23' /system/build.prop; then
 fi
 sleep 1
 echo ------------------------------------------------------------
-echo 'Burnout PR2 Rebooted' Successfully Applied!
-echo "Burnout PR2 Rebooted" > /data/system/current_profile
+echo 'Burnout PR2 Golden' Successfully Applied!
+echo "Burnout PR2 Golden" > /data/system/current_profile
 echo   You may now tweak them further
 echo    using EXKM or Kernel Adiutor
 echo ------------------------------------------------------------
