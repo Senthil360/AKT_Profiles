@@ -4,8 +4,8 @@
 #Device: One Plus 3
 #Codename: Project X.A.N.A (BE)
 #Build Status: BETA
-#Version: 3.5
-#Last Updated: 20/12/2016
+#Version: 3.6
+#Last Updated: 27/12/2016
 #Notes: Please give credit when using this in your work!
 #TWEAKS_BEGIN
 echo ""
@@ -16,7 +16,7 @@ echo If you want use it, DO NOT COMPLAIN about lag
 echo '*************************'
 sleep 5
 echo ------------------------------------------------------------
-echo Applying 'Project X.A.N.A (Extreme Battery variant)' v3.5
+echo Applying 'Project X.A.N.A (Extreme Battery variant)' v3.6
 echo Advanced Kernel Settings
 echo ------------------------------------------------------------
 sleep 0.5
@@ -25,7 +25,7 @@ echo Settings By: Asiier
 echo Device: One Plus 3
 echo Codename: 'Project X.A.N.A (BE)'
 echo Build Status: BETA
-echo Last Updated: 20/12/2016
+echo Last Updated: 27/12/2016
 echo For more information go to the XDA theard
 echo ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 sleep 0.3
@@ -91,7 +91,7 @@ echo 22000 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/min_sample_time
 echo 0 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/max_freq_hysteresis
 echo 0 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/ignore_hispeed_on_notif
 echo 0 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/boost
-echo 0 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/fast_ramp_down
+echo 1 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/fast_ramp_down
 echo 0 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/align_windows
 echo 1 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/use_migration_notif
 echo 0 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/use_sched_load
@@ -171,22 +171,22 @@ echo CM Based ROM detected
 echo Applying appropriate values.
 echo Enabling Input Boost at 556 MHz for the LITTLE cluster and at 0 MHz for the BIG Cluster
 chmod 644 /sys/module/cpu_boost/parameters/input_boost_freq
-echo 0:556800 1:0 2:0 3:0 > /sys/module/cpu_boost/parameters/input_boost_freq
+echo 0:0 1:0 2:0 3:0 > /sys/module/cpu_boost/parameters/input_boost_freq
 chmod 644 /sys/module/cpu_boost/parameters/boost_ms
 echo 0 > /sys/module/cpu_boost/parameters/boost_ms
 chmod 644 /sys/module/cpu_boost/parameters/input_boost_ms
-echo 66 > /sys/module/cpu_boost/parameters/input_boost_ms
+echo 0 > /sys/module/cpu_boost/parameters/input_boost_ms
 else
 #Enable Input Boost for LITTLE cluster @729MHz and for BIG cluster @0Hz for 100ms
 echo Non-CM ROM detected
 echo Applying appropriate values.
 echo Enabling Input Boost at 729 MHz for the LITTLE cluster and at 0 MHz for the BIG Cluster
 chmod 644 /sys/module/cpu_boost/parameters/input_boost_freq
-echo 0:729600 1:0 2:0 3:0 > /sys/module/cpu_boost/parameters/input_boost_freq
+echo 0:0 1:0 2:0 3:0 > /sys/module/cpu_boost/parameters/input_boost_freq
 chmod 644 /sys/module/cpu_boost/parameters/boost_ms
 echo 0 > /sys/module/cpu_boost/parameters/boost_ms
 chmod 644 /sys/module/cpu_boost/parameters/input_boost_ms
-echo 100 > /sys/module/cpu_boost/parameters/input_boost_ms
+echo 0 > /sys/module/cpu_boost/parameters/input_boost_ms
 fi
 sleep 0.3
 echo "=========================================="
@@ -209,7 +209,7 @@ echo N > /sys/module/msm_thermal/parameters/enabled
 sleep 0.3
 echo Tweaking HMP Scheduler for correcting BIG Cluster utilization
 echo 2 > /proc/sys/kernel/sched_window_stats_policy
-echo 90 > /proc/sys/kernel/sched_upmigrate
+echo 92 > /proc/sys/kernel/sched_upmigrate
 echo 80 > /proc/sys/kernel/sched_downmigrate
 echo 5 > /proc/sys/kernel/sched_spill_nr_run
 echo 96 > /proc/sys/kernel/sched_spill_load
@@ -220,16 +220,16 @@ fi
 if [ -e "/proc/sys/kernel/sched_enable_power_aware" ]; then
     echo 1 > /proc/sys/kernel/sched_enable_power_aware
 fi
-echo 10 > /proc/sys/kernel/sched_upmigrate_min_nice
+echo 15 > /proc/sys/kernel/sched_upmigrate_min_nice
 echo 4 > /proc/sys/kernel/sched_ravg_hist_size
 if [ -e "/proc/sys/kernel/sched_small_wakee_task_load" ]; then
-	echo 5 > /proc/sys/kernel/sched_small_wakee_task_load
+	echo 10 > /proc/sys/kernel/sched_small_wakee_task_load
 fi
 if [ -e "/proc/sys/kernel/sched_wakeup_load_threshold" ]; then
 	echo 110 > /proc/sys/kernel/sched_wakeup_load_threshold
 fi
 if [ -e "/proc/sys/kernel/sched_small_task" ]; then
-	echo 5 > /proc/sys/kernel/sched_small_task
+	echo 10 > /proc/sys/kernel/sched_small_task
 fi
 if [ -e "/proc/sys/kernel/sched_big_waker_task_load" ]; then
 	echo 35 > /proc/sys/kernel/sched_big_waker_task_load
@@ -390,7 +390,7 @@ if grep -q 'ro.build.version.sdk=23' /system/build.prop; then
 fi
 sleep 1
 echo ------------------------------------------------------------
-echo 'Project X.A.N.A v3.5' Successfully Applied!
+echo 'Project X.A.N.A v3.6' Successfully Applied!
 echo "Project X.A.N.A Battery Extreme" > /data/system/current_profile
 echo   You may now tweak them further
 echo    using EXKM or Kernel Adiutor
