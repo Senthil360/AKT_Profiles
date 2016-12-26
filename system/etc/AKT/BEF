@@ -215,7 +215,9 @@ fi
 if [ -e "/proc/sys/kernel/sched_big_waker_task_load" ]; then
 	echo 35 > /proc/sys/kernel/sched_big_waker_task_load
 fi
-echo 1 > /proc/sys/kernel/sched_migration_fixup
+if [ -e "/proc/sys/kernel/sched_migration_fixup" ]; then
+    echo 1 > /proc/sys/kernel/sched_migration_fixup
+fi
 if [ -e "/proc/sys/kernel/sched_freq_dec_notify" ]; then
 	echo 410000 > /proc/sys/kernel/sched_freq_dec_notify
 fi
