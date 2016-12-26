@@ -358,7 +358,7 @@ fi
 #Tweaking GPU
 sleep 0.4
 echo GPU Underclocking
-echo simple_ondemand > /sys/devices/soc/b00000.qcom,kgsl-3d0/devfreq/b00000.qcom,kgsl-3d0/governor
+echo msm-adreno-tz > /sys/devices/soc/b00000.qcom,kgsl-3d0/devfreq/b00000.qcom,kgsl-3d0/governor
 if grep -q 'ro.build.version.sdk=25' /system/build.prop; then
 	if grep -q 'ro.build.flavor=cm_oneplus3-userdebug' /system/build.prop; then
    		echo 510000000 > /sys/class/kgsl/kgsl-3d0/max_gpuclk
