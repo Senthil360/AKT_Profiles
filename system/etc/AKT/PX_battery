@@ -4,13 +4,13 @@
 #Device: One Plus 3
 #Codename: Project X.A.N.A (BT)
 #Build Status: BETA
-#Version: 3.6
+#Version: 3.7
 #Last Updated: 20/12/2016
 #Notes: Please give credit when using this in your work!
 #TWEAKS_BEGIN
 echo ""
 echo --------------------------------------------------------
-echo Applying 'Project X.A.N.A (Battery variant)' v3.6
+echo Applying 'Project X.A.N.A (Battery variant)' v3.7
 echo Advanced Kernel Settings
 echo --------------------------------------------------------
 sleep 0.5
@@ -266,8 +266,8 @@ if [ "$Zen_Available" == "true" ]; then
     echo zen > $DM_PATH/scheduler
     sleep 2
     echo 300 > $DM_PATH/iosched/sync_expire
-    echo 2100 > $DM_PATH/iosched/async_expire
-    echo 12 > $DM_PATH/iosched/fifo_batch
+    echo 2800 > $DM_PATH/iosched/async_expire
+    echo 14 > $DM_PATH/iosched/fifo_batch
     chmod 644 $DM_PATH/iosched/sync_expire
     echo 300 > $DM_PATH/iosched/sync_expire
 fi
@@ -307,8 +307,8 @@ for i in /sys/block/../devices/soc/624000.ufshc/host0/target0:0:0/0:0:0:[0-4]/bl
       string6=$($BB cat $i/scheduler | cut -d ']' -f1 | cut -d '[' -f2)
       if [ "$string6" == "zen" ]; then
          echo 300 > $i/iosched/sync_expire
-         echo 2100 > $i/iosched/async_expire
-         echo 12 > $i/iosched/fifo_batch
+         echo 2800 > $i/iosched/async_expire
+         echo 14 > $i/iosched/fifo_batch
         chmod 644 $i/iosched/sync_expire
         echo 300 > $i/iosched/sync_expire
     fi
@@ -327,7 +327,7 @@ if [ -e "/sys/block/sda/bdi/read_ahead_kb" ]; then
 	echo 2048 > /sys/block/sda/bdi/read_ahead_kb
 fi
 echo ·Memory Values
-echo 20 > /proc/sys/vm/swappiness
+echo 0 > /proc/sys/vm/swappiness
 echo 100 > /proc/sys/vm/vfs_cache_pressure
 echo 80 > /proc/sys/vm/dirty_ratio
 echo 50 > /proc/sys/vm/dirty_background_ratio
@@ -388,7 +388,7 @@ if grep -q 'ro.build.version.sdk=23' /system/build.prop; then
 fi
 sleep 1
 echo ------------------------------------------------------------
-echo 'Project X.A.N.A v3.6' Successfully Applied!
+echo 'Project X.A.N.A v3.7' Successfully Applied!
 echo "Project X.A.N.A Battery" > /data/system/current_profile
 echo   You may now tweak them further
 echo    using EXKM or Kernel Adiutor
