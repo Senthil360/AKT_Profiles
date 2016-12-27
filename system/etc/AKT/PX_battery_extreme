@@ -4,7 +4,7 @@
 #Device: One Plus 3
 #Codename: Project X.A.N.A (BE)
 #Build Status: BETA
-#Version: 3.6
+#Version: 3.7
 #Last Updated: 27/12/2016
 #Notes: Please give credit when using this in your work!
 #TWEAKS_BEGIN
@@ -16,7 +16,7 @@ echo If you want use it, DO NOT COMPLAIN about lag
 echo '*************************'
 sleep 5
 echo ------------------------------------------------------------
-echo Applying 'Project X.A.N.A (Extreme Battery variant)' v3.6
+echo Applying 'Project X.A.N.A (Extreme Battery variant)' v3.7
 echo Advanced Kernel Settings
 echo ------------------------------------------------------------
 sleep 0.5
@@ -328,7 +328,7 @@ if [ -e "/sys/block/sda/bdi/read_ahead_kb" ]; then
 	echo 1024 > /sys/block/sda/bdi/read_ahead_kb
 fi
 echo ·Memory Values
-echo 20 > /proc/sys/vm/swappiness
+echo 0 > /proc/sys/vm/swappiness
 echo 100 > /proc/sys/vm/vfs_cache_pressure
 echo 80 > /proc/sys/vm/dirty_ratio
 echo 50 > /proc/sys/vm/dirty_background_ratio
@@ -390,7 +390,7 @@ if grep -q 'ro.build.version.sdk=23' /system/build.prop; then
 fi
 sleep 1
 echo ------------------------------------------------------------
-echo 'Project X.A.N.A v3.6' Successfully Applied!
+echo 'Project X.A.N.A v3.7' Successfully Applied!
 echo "Project X.A.N.A Battery Extreme" > /data/system/current_profile
 echo   You may now tweak them further
 echo    using EXKM or Kernel Adiutor
