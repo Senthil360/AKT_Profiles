@@ -203,9 +203,9 @@ echo N > /sys/module/msm_thermal/parameters/enabled
 sleep 0.3
 echo Tweaking HMP Scheduler for correcting BIG Cluster utilization
 echo 2 > /proc/sys/kernel/sched_window_stats_policy
-echo 92 > /proc/sys/kernel/sched_upmigrate
+echo 91 > /proc/sys/kernel/sched_upmigrate
 echo 80 > /proc/sys/kernel/sched_downmigrate
-echo 5 > /proc/sys/kernel/sched_spill_nr_run
+echo 7 > /proc/sys/kernel/sched_spill_nr_run
 echo 96 > /proc/sys/kernel/sched_spill_load
 echo 40 > /proc/sys/kernel/sched_init_task_load
 if [ -e "/proc/sys/kernel/sched_heavy_task" ]; then
@@ -217,16 +217,16 @@ fi
 echo 15 > /proc/sys/kernel/sched_upmigrate_min_nice
 echo 4 > /proc/sys/kernel/sched_ravg_hist_size
 if [ -e "/proc/sys/kernel/sched_small_wakee_task_load" ]; then
-	echo 10 > /proc/sys/kernel/sched_small_wakee_task_load
+	echo 15 > /proc/sys/kernel/sched_small_wakee_task_load
 fi
 if [ -e "/proc/sys/kernel/sched_wakeup_load_threshold" ]; then
 	echo 110 > /proc/sys/kernel/sched_wakeup_load_threshold
 fi
 if [ -e "/proc/sys/kernel/sched_small_task" ]; then
-	echo 10 > /proc/sys/kernel/sched_small_task
+	echo 15 > /proc/sys/kernel/sched_small_task
 fi
 if [ -e "/proc/sys/kernel/sched_big_waker_task_load" ]; then
-	echo 35 > /proc/sys/kernel/sched_big_waker_task_load
+	echo 37 > /proc/sys/kernel/sched_big_waker_task_load
 fi
 echo 950000 > /proc/sys/kernel/sched_rt_runtime_us
 echo 1000000 > /proc/sys/kernel/sched_rt_period_us
