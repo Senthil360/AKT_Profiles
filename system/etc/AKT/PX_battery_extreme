@@ -4,8 +4,8 @@
 #Device: One Plus 3
 #Codename: Project X.A.N.A (BE)
 #Build Status: BETA
-#Version: 3.7
-#Last Updated: 27/12/2016
+#Version: 3.8
+#Last Updated: 28/12/2016
 #Notes: Please give credit when using this in your work!
 #TWEAKS_BEGIN
 echo ""
@@ -16,7 +16,7 @@ echo If you want use it, DO NOT COMPLAIN about lag
 echo '*************************'
 sleep 5
 echo ------------------------------------------------------------
-echo Applying 'Project X.A.N.A (Extreme Battery variant)' v3.7
+echo Applying 'Project X.A.N.A (Extreme Battery variant)' v3.8
 echo Advanced Kernel Settings
 echo ------------------------------------------------------------
 sleep 0.5
@@ -25,7 +25,7 @@ echo Settings By: Asiier
 echo Device: One Plus 3
 echo Codename: 'Project X.A.N.A (BE)'
 echo Build Status: BETA
-echo Last Updated: 27/12/2016
+echo Last Updated: 28/12/2016
 echo For more information go to the XDA theard
 echo ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 sleep 0.3
@@ -390,7 +390,7 @@ if grep -q 'ro.build.version.sdk=23' /system/build.prop; then
 fi
 sleep 1
 echo ------------------------------------------------------------
-echo 'Project X.A.N.A v3.7' Successfully Applied!
+echo 'Project X.A.N.A v3.8' Successfully Applied!
 echo "Project X.A.N.A Battery Extreme" > /data/system/current_profile
 echo   You may now tweak them further
 echo    using EXKM or Kernel Adiutor
