@@ -10,8 +10,11 @@ echo $divider
 echo -e "\e[01;36m   - All-in-One Project - \e[00;37m"
 echo -e "\e[01;36m - Advanced·Kernel·Tweaks - \e[00;37m"
 echo -e "\e[01;36m          - A·K·T -   \e[00;37m"
-echo -e "\e[01;36m         ~ BETA 0.9 ~   \e[00;37m"
+echo -e "\e[01;36m        ~ BETA 0.9.7 ~   \e[00;37m"
 echo $divider
+sleep 1
+echo ""
+echo -e "\e[01;36m *** By Asiier & Senthil360 *** \e[00;37m"
 echo ""
 sleep 2
 clear
@@ -39,6 +42,7 @@ read option
 echo ""
 case $option in
 1 ) #Project_Zhana_Battery
+$BB mount -o remount,rw /system 2>/dev/null
 mount -o remount,rw /system 2>/dev/null
 cat /system/etc/AKT/PZ_battery > /system/etc/init.d/99AKT
 chmod 777 /system/etc/init.d/99AKT
@@ -51,6 +55,7 @@ echo " For additional information and questions, please visit our XDA thread"
 sleep 5; main_menu;
 exit;;
 2 ) #Nameless_Battery 
+$BB mount -o remount,rw /system 2>/dev/null
 mount -o remount,rw /system 2>/dev/null
 cat /system/etc/AKT/NLB_battery > /system/etc/init.d/99AKT
 chmod 777 /system/etc/init.d/99AKT
@@ -63,6 +68,7 @@ echo " For additional information and questions, please visit our XDA thread"
 sleep 5; main_menu;
 exit;;
 3 ) #FairPark
+$BB mount -o remount,rw /system 2>/dev/null
 mount -o remount,rw /system 2>/dev/null
 cat /system/etc/AKT/FairPark > /system/etc/init.d/99AKT
 chmod 777 /system/etc/init.d/99AKT
@@ -75,6 +81,7 @@ echo " For additional information and questions, please visit our XDA thread"
 sleep 5; main_menu;
 exit;;
 4 ) #Project_XANA_Battery
+$BB mount -o remount,rw /system 2>/dev/null
 mount -o remount,rw /system 2>/dev/null
 cat /system/etc/AKT/PX_battery > /system/etc/init.d/99AKT
 chmod 777 /system/etc/init.d/99AKT
@@ -87,12 +94,13 @@ echo " For additional information and questions, please visit our XDA thread"
 sleep 5; main_menu;
 exit;;
 5 ) #Project_XANA_Extreme
+$BB mount -o remount,rw /system 2>/dev/null
 mount -o remount,rw /system 2>/dev/null
 cat /system/etc/AKT/PX_battery_extreme > /system/etc/init.d/99AKT
 chmod 777 /system/etc/init.d/99AKT
 chmod 777 /system/etc/AKT/PX_battery_extreme
 clear
-sh /system/ect/AKT/PX_battery_extreme
+sh /system/etc/AKT/PX_battery_extreme
 clear
 echo " Installation finished... "
 echo " For additional information and questions, please visit our XDA thread"
@@ -132,7 +140,9 @@ echo -n "Please select a profile:"
 read option
 echo ""
 case $option in
-1 ) mount -o remount,rw /system 2>/dev/null
+1 ) #Burnout PR2 
+$BB mount -o remount,rw /system 2>/dev/null
+mount -o remount,rw /system 2>/dev/null
 cat /system/etc/AKT/BEF > /system/etc/init.d/99AKT
 chmod 777 /system/etc/init.d/99AKT
 chmod 777 /system/etc/AKT/BEF
@@ -143,7 +153,9 @@ echo " Installation finished... "
 echo " For additional information and questions, please visit our XDA thread"
 sleep 5; main_menu;
 exit;;
-2 ) mount -o remount,rw /system 2>/dev/null
+2 )  #Nameless Performance
+$BB mount -o remount,rw /system 2>/dev/null
+mount -o remount,rw /system 2>/dev/null
 cat /system/etc/AKT/NLB_performance > /system/etc/init.d/99AKT
 chmod 777 /system/etc/init.d/99AKT
 chmod 777 /system/etc/AKT/NLB_performance
@@ -154,7 +166,9 @@ echo " Installation finished... "
 echo " For additional information and questions, please visit our XDA thread"
 sleep 5; main_menu;
 exit;;
-3 ) mount -o remount,rw /system 2>/dev/null
+3 ) #Fusion Perfomance
+$BB mount -o remount,rw /system 2>/dev/null
+mount -o remount,rw /system 2>/dev/null
 cat /system/etc/AKT/FusionP > /system/etc/init.d/99AKT
 chmod 777 /system/etc/init.d/99AKT
 chmod 777 /system/etc/AKT/FusionP
@@ -201,6 +215,7 @@ read option
 echo ""
 case $option in
 1 ) #GhostPepper
+$BB mount -o remount,rw /system 2>/dev/null
 mount -o remount,rw /system 2>/dev/null
 cat /system/etc/AKT/GhostPepper > /system/etc/init.d/99AKT
 chmod 777 /system/etc/init.d/99AKT
@@ -212,7 +227,9 @@ echo " Installation finished... "
 echo " For additional information and questions, please visit our XDA thread"
 sleep 5; main_menu;
 exit;;
-2 ) mount -o remount,rw /system 2>/dev/null
+2 ) #Fusion Balanced
+$BB mount -o remount,rw /system 2>/dev/null
+mount -o remount,rw /system 2>/dev/null
 cat /system/etc/AKT/FusionB > /system/etc/init.d/99AKT
 chmod 777 /system/etc/init.d/99AKT
 chmod 777 /system/etc/AKT/FusionB
@@ -223,7 +240,9 @@ echo " Installation finished... "
 echo " For additional information and questions, please visit our XDA thread"
 sleep 5; main_menu;
 exit;;
-3 ) mount -o remount,rw /system 2>/dev/null
+3 ) #Nameless Balanced 
+$BB mount -o remount,rw /system 2>/dev/null
+mount -o remount,rw /system 2>/dev/null
 cat /system/etc/AKT/NLB_balanced > /system/etc/init.d/99AKT
 chmod 777 /system/etc/init.d/99AKT
 chmod 777 /system/etc/AKT/NLB_balanced
@@ -234,23 +253,27 @@ echo " Installation finished... "
 echo " For additional information and questions, please visit our XDA thread"
 sleep 5; main_menu;
 exit;;
-4 ) mount -o remount,rw /system 2>/dev/null
-cat /system/etc/AKT/PZ_balanced > /system/etc/init.d/99AKT
-chmod 777 /system/etc/init.d/99AKT
-chmod 777 /system/etc/AKT/PZ_balanced
-clear
-sh /system/etc/AKT/PZ_balanced
-clear
-echo " Installation finished... "
-echo " For additional information and questions, please visit our XDA thread"
-sleep 5; main_menu;
-exit;;
-5 ) mount -o remount,rw /system 2>/dev/null
+4 ) #HawkPepper 
+$BB mount -o remount,rw /system 2>/dev/null
+mount -o remount,rw /system 2>/dev/null
 cat /system/etc/AKT/HawkPepper > /system/etc/init.d/99AKT
 chmod 777 /system/etc/init.d/99AKT
 chmod 777 /system/etc/AKT/HawkPepper
 clear
 sh /system/etc/AKT/HawkPepper
+clear
+echo " Installation finished... "
+echo " For additional information and questions, please visit our XDA thread"
+sleep 5; main_menu;
+exit;;
+5 ) #Project Zhana Balanced
+$BB mount -o remount,rw /system 2>/dev/null
+mount -o remount,rw /system 2>/dev/null
+cat /system/etc/AKT/PZ_balanced > /system/etc/init.d/99AKT
+chmod 777 /system/etc/init.d/99AKT
+chmod 777 /system/etc/AKT/PZ_balanced
+clear
+sh /system/etc/AKT/PZ_balanced
 clear
 echo " Installation finished... "
 echo " For additional information and questions, please visit our XDA thread"
@@ -279,6 +302,7 @@ echo -e "\e[01;31m Permission resetted... \e[00;37m"
 echo -e "\e[01;31m Files removed from /sytem ... \e[00;37m"
 echo -e "\e[01;31m Please, reboot the device for fully removing the tweaks... \e[00;37m"
 sleep 3
+$BB mount -o remount,ro /system 2>/dev/null
 mount -o remount,ro /system 2>/dev/null
 clear;
 exit
@@ -286,6 +310,7 @@ exit
 function Disable
 {
 echo ""
+$BB mount -o remount,rw /system 2>/dev/null
 mount -o remount,rw /system 2>/dev/null
 cat /system/etc/AKT/DisableInitd > /system/ect/init.d/99AKT
 chmod 644 /system/etc/init.d/99AKT
@@ -342,7 +367,7 @@ case $option in
 	3 ) clear; Performance ;;
 	4 ) clear; Disable ;;
 	5 ) clear; Remove ;;
-	6 ) clear; exit ; mount -o remount,ro /system 2>/dev/null ;; 
+	6 ) clear; exit ; $BB mount -o remount,ro /system 2>/dev/null ; mount -o remount,ro /system 2>/dev/null ;; 
 	* ) echo " Please, enter a valid option..."
 	sleep 2
 	clear;;

@@ -3,14 +3,14 @@
 #Settings By: Asiier
 #Device: One Plus 3
 #Codename: Project X.A.N.A (BT)
-#Build Status: Stable
-#Version: 3.3
-#Last Updated: 09/12/2016
+#Build Status: BETA
+#Version: 3.8
+#Last Updated: 28/12/2016
 #Notes: Please give credit when using this in your work!
 #TWEAKS_BEGIN
 echo ""
 echo --------------------------------------------------------
-echo Applying 'Project X.A.N.A (Battery variant)' v3.3
+echo Applying 'Project X.A.N.A (Battery variant)' v3.8
 echo Advanced Kernel Settings
 echo --------------------------------------------------------
 sleep 0.5
@@ -18,8 +18,8 @@ echo Author: Asiier
 echo Settings By: Asiier
 echo Device: One Plus 3
 echo Codename: 'Project X.A.N.A (BT)'
-echo Build Status: Stable
-echo Last Updated: 09/12/2016
+echo Build Status: BETA
+echo Last Updated: 28/12/2016
 echo For more information go to the XDA theard
 echo ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 sleep 0.3
@@ -58,7 +58,7 @@ if test $maxfreq -eq 1593600; then
     echo 1593600 > /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq     #Core 0 Maximum Frequency = 1593MHz         
     chmod 444 /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
     chmod 644 /sys/devices/system/cpu/cpu0/cpufreq/interactive/target_loads
-    echo 71 480000:65 556800:75 729600:81 960000:87 1036800:99 1228800:100 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/target_loads 
+    echo 71 480000:70 556800:77 729600:81 960000:87 1036800:99 1228800:100 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/target_loads 
     chmod 444 /sys/devices/system/cpu/cpu0/cpufreq/interactive/target_loads
 elif test $maxfreq -eq 1728000; then
     #Temporarily change permissions to governor files for the Little cluster to set the maximum frequency to 1728MHz
@@ -68,7 +68,7 @@ elif test $maxfreq -eq 1728000; then
     echo 1728000 > /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq     #Core 0 Maximum Frequency = 1728MHz         
     chmod 444 /sys/devices/system/cpu/cpu0/cpufreq/scaling_max_freq
     chmod 644 /sys/devices/system/cpu/cpu0/cpufreq/interactive/target_loads
-    echo 71 480000:65 556800:75 729600:81 960000:87 1036800:99 1228800:100 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/target_loads 
+    echo 71 480000:70 556800:77 729600:81 960000:87 1036800:99 1228800:100 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/target_loads 
     chmod 444 /sys/devices/system/cpu/cpu0/cpufreq/interactive/target_loads
 else
     echo "===================================================="
@@ -76,15 +76,15 @@ else
     echo "===================================================="
 fi
 chmod 644 /sys/devices/system/cpu/cpu0/cpufreq/interactive/*
-echo 200000 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/timer_slack
+echo 220000 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/timer_slack
 echo 307200 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/hispeed_freq
-echo 120000 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/timer_rate
+echo 140000 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/timer_rate
 echo 0 729600:155000 960000:165000 1228800:155000 1478400:100000 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/above_hispeed_delay
 echo 155 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/go_hispeed_load
 echo 22000 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/min_sample_time
 echo 0 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/max_freq_hysteresis
 echo 0 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/ignore_hispeed_on_notif
-echo 0 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/boost
+echo 1 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/boost
 echo 0 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/fast_ramp_down
 echo 0 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/align_windows
 echo 1 > /sys/devices/system/cpu/cpu0/cpufreq/interactive/use_migration_notif
@@ -135,11 +135,11 @@ fi
 sleep 0.5
 chmod 644 /sys/devices/system/cpu/cpu2/cpufreq/interactive/*
 #Tweak Interactive Governor
-echo 100000 > /sys/devices/system/cpu/cpu2/cpufreq/interactive/timer_slack
+echo 140000 > /sys/devices/system/cpu/cpu2/cpufreq/interactive/timer_slack
 echo 940800 > /sys/devices/system/cpu/cpu2/cpufreq/interactive/hispeed_freq
-echo 65000 > /sys/devices/system/cpu/cpu2/cpufreq/interactive/timer_rate
-echo 32000 940800:155000 1248000:175000 1401600:80000 1632000:80000 > /sys/devices/system/cpu/cpu2/cpufreq/interactive/above_hispeed_delay
-echo 99 > /sys/devices/system/cpu/cpu2/cpufreq/interactive/go_hispeed_load
+echo 85000 > /sys/devices/system/cpu/cpu2/cpufreq/interactive/timer_rate
+echo 32000 940800:205000 1248000:175000 1401600:80000 1632000:80000 > /sys/devices/system/cpu/cpu2/cpufreq/interactive/above_hispeed_delay
+echo 400 > /sys/devices/system/cpu/cpu2/cpufreq/interactive/go_hispeed_load
 echo 11000 > /sys/devices/system/cpu/cpu2/cpufreq/interactive/min_sample_time
 echo 0 > /sys/devices/system/cpu/cpu2/cpufreq/interactive/max_freq_hysteresis
 echo 1 > /sys/devices/system/cpu/cpu2/cpufreq/interactive/ignore_hispeed_on_notif
@@ -203,9 +203,9 @@ echo N > /sys/module/msm_thermal/parameters/enabled
 sleep 0.3
 echo Tweaking HMP Scheduler for correcting BIG Cluster utilization
 echo 2 > /proc/sys/kernel/sched_window_stats_policy
-echo 95 > /proc/sys/kernel/sched_upmigrate
+echo 91 > /proc/sys/kernel/sched_upmigrate
 echo 80 > /proc/sys/kernel/sched_downmigrate
-echo 5 > /proc/sys/kernel/sched_spill_nr_run
+echo 7 > /proc/sys/kernel/sched_spill_nr_run
 echo 96 > /proc/sys/kernel/sched_spill_load
 echo 40 > /proc/sys/kernel/sched_init_task_load
 if [ -e "/proc/sys/kernel/sched_heavy_task" ]; then
@@ -214,23 +214,25 @@ fi
 if [ -e "/proc/sys/kernel/sched_enable_power_aware" ]; then
     echo 1 > /proc/sys/kernel/sched_enable_power_aware
 fi
-echo 5 > /proc/sys/kernel/sched_upmigrate_min_nice
+echo 19 > /proc/sys/kernel/sched_upmigrate_min_nice
 echo 4 > /proc/sys/kernel/sched_ravg_hist_size
 if [ -e "/proc/sys/kernel/sched_small_wakee_task_load" ]; then
-	echo 5 > /proc/sys/kernel/sched_small_wakee_task_load
+	echo 15 > /proc/sys/kernel/sched_small_wakee_task_load
 fi
 if [ -e "/proc/sys/kernel/sched_wakeup_load_threshold" ]; then
 	echo 110 > /proc/sys/kernel/sched_wakeup_load_threshold
 fi
 if [ -e "/proc/sys/kernel/sched_small_task" ]; then
-	echo 5 > /proc/sys/kernel/sched_small_task
+	echo 15 > /proc/sys/kernel/sched_small_task
 fi
 if [ -e "/proc/sys/kernel/sched_big_waker_task_load" ]; then
-	echo 35 > /proc/sys/kernel/sched_big_waker_task_load
+	echo 55 > /proc/sys/kernel/sched_big_waker_task_load
 fi
 echo 950000 > /proc/sys/kernel/sched_rt_runtime_us
 echo 1000000 > /proc/sys/kernel/sched_rt_period_us
-#echo 1 > /proc/sys/kernel/sched_migration_fixup
+if [ -e "/proc/sys/kernel/sched_migration_fixup" ]; then
+	echo 1 > /proc/sys/kernel/sched_migration_fixup
+fi
 if [ -e "/proc/sys/kernel/sched_freq_dec_notify" ]; then
 	echo 410000 > /proc/sys/kernel/sched_freq_dec_notify
 fi
@@ -264,8 +266,8 @@ if [ "$Zen_Available" == "true" ]; then
     echo zen > $DM_PATH/scheduler
     sleep 2
     echo 300 > $DM_PATH/iosched/sync_expire
-    echo 2100 > $DM_PATH/iosched/async_expire
-    echo 12 > $DM_PATH/iosched/fifo_batch
+    echo 2800 > $DM_PATH/iosched/async_expire
+    echo 14 > $DM_PATH/iosched/fifo_batch
     chmod 644 $DM_PATH/iosched/sync_expire
     echo 300 > $DM_PATH/iosched/sync_expire
 fi
@@ -305,8 +307,8 @@ for i in /sys/block/../devices/soc/624000.ufshc/host0/target0:0:0/0:0:0:[0-4]/bl
       string6=$($BB cat $i/scheduler | cut -d ']' -f1 | cut -d '[' -f2)
       if [ "$string6" == "zen" ]; then
          echo 300 > $i/iosched/sync_expire
-         echo 2100 > $i/iosched/async_expire
-         echo 12 > $i/iosched/fifo_batch
+         echo 2800 > $i/iosched/async_expire
+         echo 14 > $i/iosched/fifo_batch
         chmod 644 $i/iosched/sync_expire
         echo 300 > $i/iosched/sync_expire
     fi
@@ -325,7 +327,7 @@ if [ -e "/sys/block/sda/bdi/read_ahead_kb" ]; then
 	echo 2048 > /sys/block/sda/bdi/read_ahead_kb
 fi
 echo ·Memory Values
-echo 20 > /proc/sys/vm/swappiness
+echo 0 > /proc/sys/vm/swappiness
 echo 100 > /proc/sys/vm/vfs_cache_pressure
 echo 80 > /proc/sys/vm/dirty_ratio
 echo 50 > /proc/sys/vm/dirty_background_ratio
@@ -346,7 +348,7 @@ else
 	echo ' *LMK cannot currently be modified on your Kernel* '
 fi
 echo ·TCP Values
-string2=/proc/sys/net/ipv4/tcp_available_congestion_control)
+string2=/proc/sys/net/ipv4/tcp_available_congestion_control
 if grep 'westwood' $string2; then
 echo westwood > /proc/sys/net/ipv4/tcp_congestion_control
 else
@@ -356,7 +358,7 @@ fi
 #Tweaking GPU
 sleep 0.4
 echo GPU Underclocking
-echo simple_ondemand > /sys/devices/soc/b00000.qcom,kgsl-3d0/devfreq/b00000.qcom,kgsl-3d0/governor
+echo msm-adreno-tz > /sys/devices/soc/b00000.qcom,kgsl-3d0/devfreq/b00000.qcom,kgsl-3d0/governor
 if grep -q 'ro.build.version.sdk=25' /system/build.prop; then
 	if grep -q 'ro.build.flavor=cm_oneplus3-userdebug' /system/build.prop; then
    		echo 510000000 > /sys/class/kgsl/kgsl-3d0/max_gpuclk
@@ -386,7 +388,7 @@ if grep -q 'ro.build.version.sdk=23' /system/build.prop; then
 fi
 sleep 1
 echo ------------------------------------------------------------
-echo 'Project X.A.N.A v3.3' Successfully Applied!
+echo 'Project X.A.N.A v3.8' Successfully Applied!
 echo "Project X.A.N.A Battery" > /data/system/current_profile
 echo   You may now tweak them further
 echo    using EXKM or Kernel Adiutor

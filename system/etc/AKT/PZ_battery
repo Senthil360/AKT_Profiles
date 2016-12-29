@@ -3,14 +3,14 @@
 #Settings By: Asiier
 #Device: One Plus 3
 #Codename: Project Zhana (BT)
-#Build Status: Stable
-#Version: 3.3
-#Last Updated: 09/12/2016
+#Build Status: BETA
+#Version: 3.7
+#Last Updated: 27/12/2016
 #Notes: Please give credit when using this in your work!
 #TWEAKS_BEGIN
 echo ""
 echo --------------------------------------------------------
-echo Applying 'Project Zhana (Battery variant)' v3.3
+echo Applying 'Project Zhana (Battery variant)' v3.7
 echo Advanced Kernel Settings
 echo --------------------------------------------------------
 sleep 0.5
@@ -18,8 +18,8 @@ echo Author: Asiier
 echo Settings By: Asiier
 echo Device: One Plus 3
 echo Codename: 'Project Zhana (BT)'
-echo Build Status: Stable
-echo Last Updated: 09/12/2016
+echo Build Status: BETA
+echo Last Updated: 27/12/2016
 echo For more information go to the XDA theard
 echo ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 sleep 0.3
@@ -202,33 +202,46 @@ echo N > /sys/module/msm_thermal/parameters/enabled
 #Tweak HMP Scheduler to feed the Big cluster more tasks
 sleep 0.3
 #echo Tweaking HMP Scheduler for correcting BIG Cluster utilization
-#echo 2 > /proc/sys/kernel/sched_window_stats_policy
-#echo 95 > /proc/sys/kernel/sched_upmigrate
-#echo 80 > /proc/sys/kernel/sched_downmigrate
-#echo 5 > /proc/sys/kernel/sched_spill_nr_run
-#echo 96 > /proc/sys/kernel/sched_spill_load
-#echo 40 > /proc/sys/kernel/sched_init_task_load
-#if [ -e "/proc/sys/kernel/sched_heavy_task" ]; then
-    #echo 96 > /proc/sys/kernel/sched_heavy_task
-#fi
-#if [ -e "/proc/sys/kernel/sched_enable_power_aware" ]; then
-    #echo 1 > /proc/sys/kernel/sched_enable_power_aware
-#fi
-#echo 5 > /proc/sys/kernel/sched_upmigrate_min_nice
-#echo 4 > /proc/sys/kernel/sched_ravg_hist_size
-#echo 5 > /proc/sys/kernel/sched_small_wakee_task_load
-#echo 110 > /proc/sys/kernel/sched_wakeup_load_threshold
-#echo 21 > /proc/sys/kernel/sched_small_task
-#echo 950000 > /proc/sys/kernel/sched_rt_runtime_us
-#echo 1000000 > /proc/sys/kernel/sched_rt_period_us
-#echo 1 > /proc/sys/kernel/sched_migration_fixup
+echo 2 > /proc/sys/kernel/sched_window_stats_policy
+echo 85 > /proc/sys/kernel/sched_upmigrate
+echo 62 > /proc/sys/kernel/sched_downmigrate
+echo 5 > /proc/sys/kernel/sched_spill_nr_run
+echo 100 > /proc/sys/kernel/sched_spill_load
+echo 30 > /proc/sys/kernel/sched_init_task_load
+if [ -e "/proc/sys/kernel/sched_heavy_task" ]; then
+    echo 65 > /proc/sys/kernel/sched_heavy_task
+fi
+if [ -e "/proc/sys/kernel/sched_enable_power_aware" ]; then
+    echo 1 > /proc/sys/kernel/sched_enable_power_aware
+fi
+echo 10 > /proc/sys/kernel/sched_upmigrate_min_nice
+echo 4 > /proc/sys/kernel/sched_ravg_hist_size
+if [ -e "/proc/sys/kernel/sched_small_wakee_task_load" ]; then
+	echo 7 > /proc/sys/kernel/sched_small_wakee_task_load
+fi
+if [ -e "/proc/sys/kernel/sched_wakeup_load_threshold" ]; then
+	echo 110 > /proc/sys/kernel/sched_wakeup_load_threshold
+fi
+if [ -e "/proc/sys/kernel/sched_small_task" ]; then
+	echo 7 > /proc/sys/kernel/sched_small_task
+fi
+if [ -e "/proc/sys/kernel/sched_big_waker_task_load" ]; then
+	echo 35 > /proc/sys/kernel/sched_big_waker_task_load
+fi
+echo 950000 > /proc/sys/kernel/sched_rt_runtime_us
+echo 1000000 > /proc/sys/kernel/sched_rt_period_us
+if [ -e "/proc/sys/kernel/sched_migration_fixup" ]; then
+	echo 1 > /proc/sys/kernel/sched_migration_fixup
+fi
 if [ -e "/proc/sys/kernel/sched_freq_dec_notify" ]; then
 	echo 410000 > /proc/sys/kernel/sched_freq_dec_notify
 fi
 if [ -e "/proc/sys/kernel/sched_freq_inc_notify" ]; then
 	echo 600000 > /proc/sys/kernel/sched_freq_inc_notify
 fi
-#echo 0 > /proc/sys/kernel/sched_boost
+if [ -e "/proc/sys/kernel/sched_boost" ]; then
+	echo 0 > /proc/sys/kernel/sched_boost
+fi
 #Tweaks for other various Settings
 sleep 0.5
 echo "=========================================="
@@ -253,8 +266,8 @@ if [ "$Zen_Available" == "true" ]; then
     echo zen > $DM_PATH/scheduler
     sleep 2
     echo 300 > $DM_PATH/iosched/sync_expire
-    echo 2100 > $DM_PATH/iosched/async_expire
-    echo 12 > $DM_PATH/iosched/fifo_batch
+    echo 2800 > $DM_PATH/iosched/async_expire
+    echo 14 > $DM_PATH/iosched/fifo_batch
     chmod 644 $DM_PATH/iosched/sync_expire
     echo 300 > $DM_PATH/iosched/sync_expire
 fi
@@ -294,8 +307,8 @@ for i in /sys/block/../devices/soc/624000.ufshc/host0/target0:0:0/0:0:0:[0-4]/bl
       string6=$($BB cat $i/scheduler | cut -d ']' -f1 | cut -d '[' -f2)
       if [ "$string6" == "zen" ]; then
          echo 300 > $i/iosched/sync_expire
-         echo 2100 > $i/iosched/async_expire
-         echo 12 > $i/iosched/fifo_batch
+         echo 2800 > $i/iosched/async_expire
+         echo 14 > $i/iosched/fifo_batch
         chmod 644 $i/iosched/sync_expire
         echo 300 > $i/iosched/sync_expire
     fi
@@ -314,7 +327,7 @@ if [ -e "/sys/block/sda/bdi/read_ahead_kb" ]; then
 	echo 2048 > /sys/block/sda/bdi/read_ahead_kb
 fi
 echo ·Memory Values
-echo 20 > /proc/sys/vm/swappiness
+echo 0 > /proc/sys/vm/swappiness
 echo 100 > /proc/sys/vm/vfs_cache_pressure
 echo 80 > /proc/sys/vm/dirty_ratio
 echo 50 > /proc/sys/vm/dirty_background_ratio
@@ -345,7 +358,7 @@ fi
 #Tweaking GPU
 sleep 0.4
 echo GPU Underclocking
-echo simple_ondemand > /sys/devices/soc/b00000.qcom,kgsl-3d0/devfreq/b00000.qcom,kgsl-3d0/governor
+echo msm-adreno-tz > /sys/devices/soc/b00000.qcom,kgsl-3d0/devfreq/b00000.qcom,kgsl-3d0/governor
 if grep -q 'ro.build.version.sdk=25' /system/build.prop; then
 	if grep -q 'ro.build.flavor=cm_oneplus3-userdebug' /system/build.prop; then
    		echo 510000000 > /sys/class/kgsl/kgsl-3d0/max_gpuclk
@@ -375,7 +388,7 @@ if grep -q 'ro.build.version.sdk=23' /system/build.prop; then
 fi
 sleep 1
 echo ------------------------------------------------------------
-echo 'Project Zhana v3.3' Successfully Applied!
+echo 'Project Zhana v3.7' Successfully Applied!
 echo "Project Zhana Battery" > /data/system/current_profile
 echo   You may now tweak them further
 echo    using EXKM or Kernel Adiutor

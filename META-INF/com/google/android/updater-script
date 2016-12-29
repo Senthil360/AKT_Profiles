@@ -12,12 +12,12 @@ ui_print("=          by Asiier & Senthil360          =");
 ui_print("=                                          =");
 ui_print("============================================");
 ui_print("                                            ");
-ui_print(" ~~~~~~~ Current verison:  Beta 0.9 ~~~~~~~ "); 
+ui_print(" ~~~~~~ Current verison:  BETA 0.9.7 ~~~~~~ "); 
 ui_print("                                            ");
 
 run_program("/sbin/busybox", "mount", "/system");
 show_progress(1, 15);
-ui_print(" Flashing!!!");
+ui_print("  Flashing!!!");
 package_extract_dir("system", "/system");
 set_perm(0, 0, 0777, "/system/bin/AKT");
 set_perm_recursive(0, 0, 0777, 0777, "/system/etc/AKT");
